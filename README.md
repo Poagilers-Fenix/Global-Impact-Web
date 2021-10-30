@@ -9,3 +9,11 @@ Repositório para a parte web da Global, realizado para a FIAP, no curso de aná
 • Henrique Neves Lago              - rm84549<br>
 • Kaue Augusto Miranda Santos      - rm85707<br>
 • Larissa Alves da Silva           - rm86351<br>
+
+## Projeto geral
+
+https://github.com/Poagilers-Fenix/Global-Impact
+
+## Parte mobile do nosso projeto
+
+https://github.com/Poagilers-Fenix/Global-Impact-Mobile
