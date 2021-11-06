@@ -656,19 +656,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\CLIENTE\\.nuget\\packages\\": {}
+    "C:\\Users\\SAMSUNG\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\CLIENTE\\Documents\\GitHub\\Global-Impact-Web\\Web-Dot-Net\\Global-Impact\\Global-Impact\\Global-Impact.csproj",
+      "projectUniqueName": "D:\\Área de Trabalho\\Kaue\\2TDSG\\DevopsCloudingComputing\\2ºSemestre\\CheckPoint2\\Global-Impact-Web\\Global-Impact\\Global-Impact\\Global-Impact.csproj",
       "projectName": "Global-Impact",
-      "projectPath": "C:\\Users\\CLIENTE\\Documents\\GitHub\\Global-Impact-Web\\Web-Dot-Net\\Global-Impact\\Global-Impact\\Global-Impact.csproj",
-      "packagesPath": "C:\\Users\\CLIENTE\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\CLIENTE\\Documents\\GitHub\\Global-Impact-Web\\Web-Dot-Net\\Global-Impact\\Global-Impact\\obj\\",
+      "projectPath": "D:\\Área de Trabalho\\Kaue\\2TDSG\\DevopsCloudingComputing\\2ºSemestre\\CheckPoint2\\Global-Impact-Web\\Global-Impact\\Global-Impact\\Global-Impact.csproj",
+      "packagesPath": "C:\\Users\\SAMSUNG\\.nuget\\packages\\",
+      "outputPath": "D:\\Área de Trabalho\\Kaue\\2TDSG\\DevopsCloudingComputing\\2ºSemestre\\CheckPoint2\\Global-Impact-Web\\Global-Impact\\Global-Impact\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\CLIENTE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\SAMSUNG\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

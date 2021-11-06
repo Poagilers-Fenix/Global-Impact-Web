@@ -8,24 +8,26 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Global_Impact</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <header style="background-color: #B7DBD2; ">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 m-0">
+            <div class="container d-flex"  style="height:100px; margin:0">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img src="~/img/weFeed.png" width="150"/></a>
+
+
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav flex-grow-1 d-flex justify-content-end mr-5">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" style="font-size:22px" asp-controller="Home" asp-action="Index">Página Inicial</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" style="font-size:22px" asp-controller="Home" asp-action="Privacy">Doar Alimento</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" style="font-size:22px" asp-controller="Home" asp-action="Privacy">ONGs</a>
                         </li>
                     </ul>
                 </div>
+                <a class="navbar-brand"  asp-controller="Home" asp-action="Index"><img src="~/img/portaFechada.png" width="50" /></a>
             </div>
         </nav>
     </header>
