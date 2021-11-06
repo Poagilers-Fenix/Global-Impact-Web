@@ -7,7 +7,7 @@ namespace Global_Impact.Models
 {
     public class DoacaoAlimento
     {
-        public int DoacaoInt { get; set; }
+        public int DoacaoId { get; set; }
         public Doacao Doacao { get; set; }
         public int AlimentoId { get; set; }
         public Alimento Alimento { get; set; }

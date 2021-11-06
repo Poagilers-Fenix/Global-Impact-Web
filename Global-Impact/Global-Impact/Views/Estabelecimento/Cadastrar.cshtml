@@ -1,0 +1,27 @@
+﻿@{ 
+    ViewData["title"] = "Cadastrar Estabelecimento";
+    Layout = "_LayoutUser"; 
+}
+
+<div class="w-50 mx-auto mt-2 mb-4 d-flex justify-content-around">
+    <a asp-action="login" asp-controller="home" class="btn-link">Login</a>
+    <a asp-action="cadastrar" class="btn-link current-page">Cadastro</a>
+</div>
+
+<div class="w-50 mx-auto mb-4 d-flex justify-content-around">
+    <a asp-action="cadastrar" class="btn-disabled btn" title="Em breve">Pessoa Física</a>
+    <a asp-action="cadastrar" class="btn-abled btn">Pessoa Jurídica</a>
+</div>
+
+<div class="d-flex align-items-center justify-content-center container">
+    <form class="w-75" asp-action="cadastrar">
+        <partial name="_FormEstab" /> <br />
+
+        <div class="d-flex flex-column justify-content-center text-center">
+            <button class="btn-abled btn m-auto">Finalizar</button>
+            <a asp-action="login" asp-controller="home" class="mt-2 link">
+                Já tem cadastro? <br />Clique para realizar o login
+            </a>
+        </div>
+    </form>
+</div>

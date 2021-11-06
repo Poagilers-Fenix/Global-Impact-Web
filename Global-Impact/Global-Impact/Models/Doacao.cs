@@ -11,5 +11,7 @@ namespace Global_Impact.Models
         public Estabelecimento Estabelecimento { get; set; }
         public DateTime DataDoacao { get; set; }
         public Ong Ong { get; set; }
+
+        public IList<DoacaoAlimento> DoacoesAlimentos { get; set; }
     }
 }

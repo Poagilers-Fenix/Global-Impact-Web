@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Área de Trabalho\\Kaue\\2TDSG\\DevopsCloudingComputing\\2ºSemestre\\CheckPoint2\\Global-Impact-Web\\Global-Impact\\Global-Impact\\Global-Impact.csproj": {}
+    "D:\\Arquivos de Programas (x86)\\Git-Hub\\Global-Impact-Web\\Global-Impact\\Global-Impact\\Global-Impact.csproj": {}
   },
   "projects": {
-    "D:\\Área de Trabalho\\Kaue\\2TDSG\\DevopsCloudingComputing\\2ºSemestre\\CheckPoint2\\Global-Impact-Web\\Global-Impact\\Global-Impact\\Global-Impact.csproj": {
+    "D:\\Arquivos de Programas (x86)\\Git-Hub\\Global-Impact-Web\\Global-Impact\\Global-Impact\\Global-Impact.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Área de Trabalho\\Kaue\\2TDSG\\DevopsCloudingComputing\\2ºSemestre\\CheckPoint2\\Global-Impact-Web\\Global-Impact\\Global-Impact\\Global-Impact.csproj",
+        "projectUniqueName": "D:\\Arquivos de Programas (x86)\\Git-Hub\\Global-Impact-Web\\Global-Impact\\Global-Impact\\Global-Impact.csproj",
         "projectName": "Global-Impact",
-        "projectPath": "D:\\Área de Trabalho\\Kaue\\2TDSG\\DevopsCloudingComputing\\2ºSemestre\\CheckPoint2\\Global-Impact-Web\\Global-Impact\\Global-Impact\\Global-Impact.csproj",
-        "packagesPath": "C:\\Users\\SAMSUNG\\.nuget\\packages\\",
-        "outputPath": "D:\\Área de Trabalho\\Kaue\\2TDSG\\DevopsCloudingComputing\\2ºSemestre\\CheckPoint2\\Global-Impact-Web\\Global-Impact\\Global-Impact\\obj\\",
+        "projectPath": "D:\\Arquivos de Programas (x86)\\Git-Hub\\Global-Impact-Web\\Global-Impact\\Global-Impact\\Global-Impact.csproj",
+        "packagesPath": "C:\\Users\\gih_m\\.nuget\\packages\\",
+        "outputPath": "D:\\Arquivos de Programas (x86)\\Git-Hub\\Global-Impact-Web\\Global-Impact\\Global-Impact\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\SAMSUNG\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gih_m\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,6 +43,16 @@
             "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
               "version": "[3.1.20, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.11, )"
             }
           },
           "imports": [
@@ -55,12 +65,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.1.18, 3.1.18]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -69,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

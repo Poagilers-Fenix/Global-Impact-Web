@@ -1,4 +1,13 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿window.onload = function () {
 
-// Write your JavaScript code.
+    var porta = document.querySelector('#porta')
+
+    porta.addEventListener('mouseenter', () => {
+        porta.src = '../img/portaAberta.png'
+    })
+
+    porta.addEventListener('mouseout', () => {
+        porta.src = '../img/portaFechada.png'
+    })
+
+}

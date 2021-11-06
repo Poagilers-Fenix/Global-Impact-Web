@@ -6,13 +6,15 @@
     <title>@ViewData["Title"] - Global_Impact</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script href="~/js/site.js"></script>
 </head>
 <body>
-    <header style="background-color: #B7DBD2; ">
+    <header style="background-color: var(--header-bg); ">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 m-0">
-            <div class="container d-flex"  style="height:100px; margin:0">
-                <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img src="~/img/weFeed.png" width="150"/></a>
-
+            <div class="d-flex justify-content-between w-100 align-items-center" style="height: 100px;">
+                <div class="m-0 p-0">
+                    <a class="navbar-brand col-4" asp-controller="Home" asp-action="Index"><img src="~/img/weFeed.png" width="150" /></a>
+                </div>
 
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1 d-flex justify-content-end mr-5">
@@ -27,7 +29,10 @@
                         </li>
                     </ul>
                 </div>
-                <a class="navbar-brand"  asp-controller="Home" asp-action="Index"><img src="~/img/portaFechada.png" width="50" /></a>
+                <div class="m-0 p-0">
+
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img src="~/img/portaFechada.png" id="porta" width="50" /></a>
+                </div>
             </div>
         </nav>
     </header>
@@ -37,7 +42,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted" style="background-color: var(--dark-grey)">
         <div class="container">
             &copy; 2021 - Global_Impact - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
