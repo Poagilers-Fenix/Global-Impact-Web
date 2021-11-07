@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Global_Impact.Models
 {
+    [Table("Tb_DoacaoAlimento")]
     public class DoacaoAlimento
     {
         public int DoacaoId { get; set; }

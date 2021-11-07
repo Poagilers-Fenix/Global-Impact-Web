@@ -12,8 +12,9 @@ namespace Global_Impact.Models
     {
         [Column("cd_alimento")]
         public int AlimentoId { get; set; }
-        [Required, MinLength(3, ErrorMessage = "O nome deve ter, no mínimo, 3 caracteres."), 
-            MaxLength(50, ErrorMessage = "O nome deve ter, no máximo, 40 caracteres."), Column("nm_alimento")]
+        [Required, Column("nm_alimento"),
+            MinLength(3, ErrorMessage = "O nome deve ter, no mínimo, 3 caracteres."), 
+            MaxLength(50, ErrorMessage = "O nome deve ter, no máximo, 40 caracteres.")]
         public string Nome { get; set; }
         public IList<DoacaoAlimento> DoacoesAlimentos { get; set; }
     }
