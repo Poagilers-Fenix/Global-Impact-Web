@@ -12,5 +12,10 @@ namespace Global_Impact.Controllers
         {
             return View();
         }
+
+        public IActionResult Cadastrar()
+        {
+            return View();
+        }
     }
 }

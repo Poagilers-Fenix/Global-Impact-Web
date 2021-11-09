@@ -24,14 +24,14 @@ namespace Global_Impact.Models
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DoacaoItem>>> GetDoacoesAlimentos()
         {
-            return await _context.DoacoesAlimentos.ToListAsync();
+            return await _context.DoacoesItens.ToListAsync();
         }
 
         // GET: api/DoacaoItems/5
         [HttpGet("{id}")]
         public async Task<ActionResult<DoacaoItem>> GetDoacaoItem(int id)
         {
-            var doacaoItem = await _context.DoacoesAlimentos.FindAsync(id);
+            var doacaoItem = await _context.DoacoesItens.FindAsync(id);
 
             if (doacaoItem == null)
             {
@@ -79,7 +79,7 @@ namespace Global_Impact.Models
         [HttpPost]
         public async Task<ActionResult<DoacaoItem>> PostDoacaoItem(DoacaoItem doacaoItem)
         {
-            _context.DoacoesAlimentos.Add(doacaoItem);
+            _context.DoacoesItens.Add(doacaoItem);
             try
             {
                 await _context.SaveChangesAsync();
@@ -103,13 +103,13 @@ namespace Global_Impact.Models
         [HttpDelete("{id}")]
         public async Task<ActionResult<DoacaoItem>> DeleteDoacaoItem(int id)
         {
-            var doacaoItem = await _context.DoacoesAlimentos.FindAsync(id);
+            var doacaoItem = await _context.DoacoesItens.FindAsync(id);
             if (doacaoItem == null)
             {
                 return NotFound();
             }
 
-            _context.DoacoesAlimentos.Remove(doacaoItem);
+            _context.DoacoesItens.Remove(doacaoItem);
             await _context.SaveChangesAsync();
 
             return doacaoItem;
@@ -117,7 +117,7 @@ namespace Global_Impact.Models
 
         private bool DoacaoItemExists(int id)
         {
-            return _context.DoacoesAlimentos.Any(e => e.DoacaoId == id);
+            return _context.DoacoesItens.Any(e => e.DoacaoId == id);
         }
     }
 }

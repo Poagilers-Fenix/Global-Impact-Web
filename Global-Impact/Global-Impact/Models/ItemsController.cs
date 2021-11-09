@@ -22,16 +22,16 @@ namespace Global_Impact.Models
 
         // GET: api/Items
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Item>>> GetAlimentos()
+        public async Task<ActionResult<IEnumerable<Item>>> GetItens()
         {
-            return await _context.Alimentos.ToListAsync();
+            return await _context.Itens.ToListAsync();
         }
 
         // GET: api/Items/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Item>> GetItem(int id)
         {
-            var item = await _context.Alimentos.FindAsync(id);
+            var item = await _context.Itens.FindAsync(id);
 
             if (item == null)
             {
@@ -79,7 +79,7 @@ namespace Global_Impact.Models
         [HttpPost]
         public async Task<ActionResult<Item>> PostItem(Item item)
         {
-            _context.Alimentos.Add(item);
+            _context.Itens.Add(item);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetItem", new { id = item.ItemId }, item);
@@ -89,13 +89,13 @@ namespace Global_Impact.Models
         [HttpDelete("{id}")]
         public async Task<ActionResult<Item>> DeleteItem(int id)
         {
-            var item = await _context.Alimentos.FindAsync(id);
+            var item = await _context.Itens.FindAsync(id);
             if (item == null)
             {
                 return NotFound();
             }
 
-            _context.Alimentos.Remove(item);
+            _context.Itens.Remove(item);
             await _context.SaveChangesAsync();
 
             return item;
@@ -103,7 +103,7 @@ namespace Global_Impact.Models
 
         private bool ItemExists(int id)
         {
-            return _context.Alimentos.Any(e => e.ItemId == id);
+            return _context.Itens.Any(e => e.ItemId == id);
         }
     }
 }

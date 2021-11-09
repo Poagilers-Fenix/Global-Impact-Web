@@ -25,7 +25,7 @@ namespace Global_Impact.Models
         public DateTime DataDoacao { get; set; }
 
         // muitos-para-muitos
-        public IList<DoacaoItem> DoacoesAlimentos { get; set; }
+        public IList<DoacaoItem> DoacoesItens { get; set; }
 
     }
 }
