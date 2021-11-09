@@ -28,5 +28,7 @@ namespace Global_Impact.Models
         [MinLength(10, ErrorMessage = "O telefone está incompleto. Lembre-se de colocar o DDD.")]
         public string Telefone { get; set; }
 
+        public string Foto { get; set; }
+
     }
 }

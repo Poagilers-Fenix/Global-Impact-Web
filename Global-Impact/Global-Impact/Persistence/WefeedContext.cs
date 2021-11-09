@@ -19,7 +19,7 @@ namespace Global_Impact.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<DoacaoItem>().HasKey(p => new { p.DoacaoId, p.AlimentoId });
+            modelBuilder.Entity<DoacaoItem>().HasKey(p => new { p.DoacaoId, p.ItemId });
 
             modelBuilder.Entity<DoacaoItem>()
             .HasOne(p => p.Doacao)
@@ -27,9 +27,9 @@ namespace Global_Impact.Persistence
             .HasForeignKey(m => m.DoacaoId);
 
             modelBuilder.Entity<DoacaoItem>()
-            .HasOne(p => p.Alimento)
-            .WithMany(m => m.DoacoesAlimentos)
-            .HasForeignKey(m => m.AlimentoId);
+            .HasOne(p => p.Item)
+            .WithMany(m => m.DoacoesItens)
+            .HasForeignKey(m => m.ItemId);
 
             base.OnModelCreating(modelBuilder);
         }

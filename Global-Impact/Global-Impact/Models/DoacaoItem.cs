@@ -25,6 +25,7 @@ namespace Global_Impact.Models
         public DateTime DataValidade { get; set; }
 
         [Required(ErrorMessage = "A quantidade não pode ficar vazia.")]
+        [Column(TypeName = "decimal(5,2)")] // máx 999,99
         public decimal Quantidade { get; set; }
 
         [Required(ErrorMessage = "A unidade de medida não pode ficar vazia")]
