@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Global_Impact.Models
 {
-    [Table("Tb_endereco")]
+    [Table("Tb_Endereco")]
     public class Endereco
     {
         public int EnderecoId { get; set; }
