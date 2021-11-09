@@ -738,3 +738,5 @@ D:\Arquivos de Programas (x86)\Git-Hub\Global-Impact-Web\Global-Impact\Global-Im
 D:\Arquivos de Programas (x86)\Git-Hub\Global-Impact-Web\Global-Impact\Global-Impact\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 D:\Arquivos de Programas (x86)\Git-Hub\Global-Impact-Web\Global-Impact\Global-Impact\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\Arquivos de Programas (x86)\Git-Hub\Global-Impact-Web\Global-Impact\Global-Impact\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Arquivos de Programas (x86)\Git-Hub\Global-Impact-Web\Global-Impact\Global-Impact\obj\Debug\netcoreapp3.1\Razor\Views\Ong\Index.cshtml.g.cs
+D:\Arquivos de Programas (x86)\Git-Hub\Global-Impact-Web\Global-Impact\Global-Impact\obj\Debug\netcoreapp3.1\Razor\Views\Home\NovaDoacao.cshtml.g.cs

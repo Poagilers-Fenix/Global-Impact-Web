@@ -6,45 +6,36 @@
     <title>@ViewData["Title"] - Global_Impact</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/estab.css" />
     <script href="~/js/site.js"></script>
 </head>
 <body>
     <header style="background-color: var(--header-bg); ">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 m-0">
-            <div class="d-flex justify-content-between w-100 align-items-center" style="height: 100px;">
+            <div class="d-flex justify-content-between w-100 align-items-center" style="height: 15vh;">
                 <div class="m-0 p-0">
-                    <a class="navbar-brand col-4" asp-controller="Home" asp-action="Index"><img src="~/img/weFeed.png" width="150" /></a>
+                    <a class="navbar-brand col-4" asp-controller="Home" asp-action="Index"><img src="~/img/weFeed.png" width="140" /></a>
                 </div>
 
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1 d-flex justify-content-end mr-5">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" style="font-size:22px" asp-controller="Home" asp-action="Index">Página Inicial</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" style="font-size:22px" asp-controller="Home" asp-action="Privacy">Doar Alimento</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" style="font-size:22px" asp-controller="Home" asp-action="Privacy">ONGs</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="m-0 p-0">
+                @RenderSection("Links")
 
-                    <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img src="~/img/portaFechada.png" id="porta" width="50" /></a>
+                <div class="m-0 p-0">
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                        <img src="~/img/portaFechada.png" id="porta" width="50" />
+                    </a>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div style="width: 95vw; height: 62vh">
+        <main role="main" class="pb-3 h-100">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted" style="background-color: var(--dark-grey)">
-        <div class="container">
-            &copy; 2021 - Global_Impact - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top footer text-muted box-shadow m-3" style="background-color: var(--medium-grey); height: 13vh; width: 98vw; border-radius: 20px;">
+        <div class="d-flex justify-content-center align-items-center w-100 h-100">
+            <img src="~/img/weFeed.png" width="100" /> &copy; 2021 by Poágilers
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

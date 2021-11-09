@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XchxT83K9yGPMyayuO6Ethot16a5IsnCF0LyyP2vWXlXN3RXfp4YOJuRbF7xGm5YcHHZQAaNdXl7kJRJUlOB4g==",
+  "dgSpecHash": "rj8cmYG+2iNK2vt0ZuRswXVfE3Zdu+7ejqCFztjHHfsJqZI4MbDVNFHJ/kRQXOHvUWcaW0RIU7q4mPz0KFOaqg==",
   "success": true,
   "projectFilePath": "D:\\Arquivos de Programas (x86)\\Git-Hub\\Global-Impact-Web\\Global-Impact\\Global-Impact\\Global-Impact.csproj",
   "expectedPackageFiles": [
@@ -22,7 +22,6 @@
     "C:\\Users\\gih_m\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.11\\microsoft.entityframeworkcore.relational.5.0.11.nupkg.sha512",
     "C:\\Users\\gih_m\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\5.0.11\\microsoft.entityframeworkcore.sqlserver.5.0.11.nupkg.sha512",
     "C:\\Users\\gih_m\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\5.0.11\\microsoft.entityframeworkcore.tools.5.0.11.nupkg.sha512",
-    "C:\\Users\\gih_m\\.nuget\\packages\\microsoft.extensions.apidescription.client\\0.3.0-preview7.19365.7\\microsoft.extensions.apidescription.client.0.3.0-preview7.19365.7.nupkg.sha512",
     "C:\\Users\\gih_m\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\gih_m\\.nuget\\packages\\microsoft.extensions.caching.memory\\5.0.0\\microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",
     "C:\\Users\\gih_m\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
@@ -44,8 +43,6 @@
     "C:\\Users\\gih_m\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\gih_m\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\gih_m\\.nuget\\packages\\newtonsoft.json\\10.0.1\\newtonsoft.json.10.0.1.nupkg.sha512",
-    "C:\\Users\\gih_m\\.nuget\\packages\\nswag.apidescription.client\\13.0.5\\nswag.apidescription.client.13.0.5.nupkg.sha512",
-    "C:\\Users\\gih_m\\.nuget\\packages\\nswag.msbuild\\13.0.5\\nswag.msbuild.13.0.5.nupkg.sha512",
     "C:\\Users\\gih_m\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\gih_m\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\gih_m\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",

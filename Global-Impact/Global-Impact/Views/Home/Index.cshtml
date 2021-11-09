@@ -2,7 +2,69 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1>Bem-vindo(a)!</h1>
-    <a asp-action="cadastrar" asp-controller="estabelecimento" class="btn btn-primary">Cadastrar Estabelecimento</a>
+
+@section Links{
+    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+        <ul class="navbar-nav flex-grow-1 d-flex justify-content-end mr-5">
+            <li class="nav-item">
+                <a class="nav-link current-page" style="font-size:22px; color: var(--main-red); font-weight: bold" asp-controller="Home" asp-action="Index">Página Inicial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark another-page" style="font-size:22px" asp-controller="Home" asp-action="NovaDoacao">Doar Alimento</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark another-page" style="font-size:22px" asp-controller="Ong" asp-action="Index">ONGs</a>
+            </li>
+        </ul>
+    </div>
+}
+
+<div class="d-flex w-100 align-items-center h-100">
+    <div class="box-shadow col-9 m-3 h-100 w-100 b-radius">
+        <div class="d-flex">
+            <div class="col-9">
+                <h4 class="title m-4">Bem-vindo(a)!</h4>
+                <p class="paragraph">
+                    O weFeed foi feito para conectar aqueles que querem evitar o descarte de comida e os que não têm
+                    alimento disponível. É a forma de acabar com o desperdício e com a fome em apenas uma solução.
+                </p>
+            </div>
+            <div class="col-3 m-4">
+                <img src="~/img/delivery-man.png" width="120" />
+            </div>
+        </div>
+
+        <div>
+            <div class="col-12">
+                <a asp-action="NovaDoacao" class="d-flex align-items-center link">
+                    <h4 class="title">Doações</h4>
+                    <img src="~/img/add-button.png" width="40" />
+                </a>
+                <p class="paragraph">
+                    Aqui você pode realizar doações para organizações sem fins lucrativos que aceitem receber 
+                    alimentos, evitando assim o desperdício e ajudando quem precisa.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-shadow col-3 m-3 h-100 b-radius">
+        <h5 class="title d-flex justify-content-center">Informações</h5>
+        @*<div>
+            @foreach (var site in ViewBag.titles)
+            {
+                <a class="m-auto" href="">@site</a>
+            }
+        </div>*@
+
+        <div class="d-flex flex-column align-items-center">
+            <a class="m-2 info-link" href="https://brasil.un.org/pt-br/sdgs/2">Fome Zero e Agricultura Sustentável</a>
+            <a class="m-2 info-link" href="https://www.redebrasilatual.com.br/cidadania/2021/10/fome-brasil-19-milhoes-inseguranca-alimentar/">20 milhões de brasileiros sentem fome</a>
+            <a class="m-2 info-link" href="https://www.ecycle.com.br/desperdicio-de-alimentos/">Por que o desperdício gera fome?</a>
+            <a class="m-2 info-link" href="https://www.embrapa.br/busca-de-noticias/-/noticia/59945046/indice-global-do-desperdicio-de-alimentos-da-onu-estima-em-121-quilos-o-desperdicio-de-comida-per-capita-anual">Desperdício de toneladas de alimentos</a>
+            <a class="m-2 info-link" href="https://neogrid.com/br/blog/varejo-mais-sustentavel-como-a-tecnologia-pode-reduzir-o-desperdicio">Reduzir o desperdício com tecnologia</a>
+            <a class="m-2 info-link" href="https://conferenciassan.org.br/ativismo-contra-a-fome/">Ativismo contra a fome?</a>
+        </div>
+
+    </div>
 </div>

@@ -27,6 +27,7 @@ namespace Global_Impact.Controllers
             return View();
         }
 
+        [HttpPost]
         public IActionResult Cadastrar(Estabelecimento estab)
         {
             _context.Estabelecimentos.Add(estab);
