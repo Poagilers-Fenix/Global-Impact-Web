@@ -55,7 +55,7 @@
                             <h5 class="d-flex justify-content-center mt-2" style="word-wrap: break-word">@item.Nome</h5>
                             <p style="word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;" class="mx-3">@item.Descricao</p>
                             <p class="d-flex justify-content-center">@item.Telefone</p>
-                            <a asp-action="index" style="background-color: var(--main-red);" class="d-flex justify-content-center pa-2 text-white">Saiba mais sobre essa ong</a>
+                            <a asp-action="PaginaOng" asp-controller="Ong" asp-route-id="@item" style="background-color: var(--main-red);" class="d-flex justify-content-center pa-2 text-white">Saiba mais sobre essa ong</a>
                         </div>
                     </div>
                 </div>
