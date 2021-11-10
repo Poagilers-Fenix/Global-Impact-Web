@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Global_Impact.Repositories
@@ -13,6 +14,8 @@ namespace Global_Impact.Repositories
         void Editar(Estabelecimento estabelecimento);
 
         Estabelecimento BuscarPorId(int id);
+
+        Estabelecimento BuscarPor(Expression<Func<Estabelecimento, bool>> filtro);
 
         void Remover(int id);
 

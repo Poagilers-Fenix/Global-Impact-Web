@@ -1,6 +1,13 @@
-﻿@{
+﻿@model DoacaoItem
+
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
     ViewData["title"] = "Nova Doação";
 }
+
+<script src="~/js/items-list.js"></script>
 
 @section Links{
     <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
@@ -39,7 +46,7 @@
                     <div class="box-shadow b-radius m-2 item-card" style="width: 45%;">
                         <div class="d-flex justify-content-between">
                             <h6 class="paragraph m-3">@item.Nome</h6>
-                            <input name="@item.ItemId" type="checkbox" class="my-auto mr-3" />
+                            <input onclick="adicionar()" value="@item.Nome" type="checkbox" class="my-auto mr-3 itens" />
                         </div>
                         <div class="d-flex">
                             <p class="col-4 mt-4" style="font-size: 1rem">Quantidade</p>
@@ -51,19 +58,35 @@
                                 </select>
                             </div>
                         </div>
-                        <div>
-
-                        </div>
                     </div>
                 }
             </div>
         </div>
     </div>
     <div class="col-3 box-shadow b-radius m-auto" style="background-color: var(--light-grey); height: 80%; margin-top: 5%">
-        <h5 class="text-danger d-flex justify-content-center mt-3">Itens a doar</h5>
-        <div>
+        <h5 class="text-danger title d-flex justify-content-center mt-3">Itens a doar</h5>
+        <div style="min-height: 60%">
+            <ul id="lista">
 
+            </ul>
         </div>
-        <a class="px-4 py-2 text-light d-flex justify-content-end" style="background-color: var(--light-red); border-radius: 10px; font-size: 14px">Selecionar destino →</a>
+        <div class="d-flex justify-content-end">
+            @if (HttpContextAccessor.HttpContext.Session.Get("EstabSession") != null)
+            {
+                <form asp-action="EscolherOng">
+                    <button class="px-4 py-2 text-light btn-login btn" style="background-color: var(--light-red);
+                          border-radius: 10px; font-size: 14px" type="submit">
+                        Selecionar destino →
+                    </button>
+                </form>
+            }
+            else
+            {
+                <p class="px-4 py-2 text-dark btn-login btn" style="background-color: var(--medium-grey);
+                      border-radius: 10px; font-size: 14px" title="Faça login para habilitar essa funcionalidade">
+                    Selecionar destino →
+                </p>
+            }
+        </div>
     </div>
 </div>

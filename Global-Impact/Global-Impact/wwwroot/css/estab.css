@@ -24,6 +24,10 @@ body {
         color: var(--main-red);
     }
 
+.nav-link {
+    font-size: 22px;
+}
+
 .current-page {
     color: var(--main-red);
     padding: 5px;
@@ -32,6 +36,12 @@ body {
 
 .another-page {
     padding: 5px;
+}
+
+.btn-login {
+    background-color: var(--light-red); 
+    border-radius: 5px; 
+    color: #fff;
 }
 
 .info-link {
@@ -87,5 +97,37 @@ body {
 @media screen and (min-width: 1900px) {
     .item-card {
         width: 30% !important;
+    }
+
+    .title {
+        color: var(--main-red);
+        font-weight: bold;
+        font-size: 2rem;
+        margin: 1.5rem;
+    }
+
+    .paragraph, .nav-link {
+        /*text-indent: 5%;*/
+        font-size: 1.7rem;
+    /*margin-left: 1.5rem;*/
+    }
+
+    .btn-login {
+        font-size: 1.7rem;
+        padding: 10% 15%;
+    }
+
+    .info-link {
+        font-size: 1.3rem;
+    }
+
+    #div-img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #delivery-man {
+        width: 180px;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Global_Impact.Models;
 using Global_Impact.Persistence;
+using Global_Impact.Repositories;
 using Global_Impact.SessionHelpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -16,11 +17,13 @@ namespace Global_Impact.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private WefeedContext _context;
+        private IEstabelecimentoRepository _estabRepository;
 
-        public HomeController(ILogger<HomeController> logger, WefeedContext context) //, OngsController ongs)
+        public HomeController(ILogger<HomeController> logger, WefeedContext context, IEstabelecimentoRepository estabRepository)
         {
             _logger = logger;
             _context = context;
+            _estabRepository = estabRepository;
         }
 
         public IActionResult Index()
@@ -36,8 +39,17 @@ namespace Global_Impact.Controllers
         [HttpPost]
         public IActionResult Login(Estabelecimento estab)
         {
-            HttpContext.Session.SetObjectAsJson("EstabSessao", estab);
-            return RedirectToAction("index");
+            Estabelecimento estabEncontrado = _estabRepository.BuscarPor(e => e.Email == estab.Email);
+            if (estabEncontrado != null)
+            {
+                if (estabEncontrado.Senha == estab.Senha)
+                {
+                    HttpContext.Session.SetObjectAsJson("EstabSessao", estab);
+                    return RedirectToAction("index");
+                }
+            }
+            TempData["msg"] = "E-mail ou senha incorretos!";
+            return View();
         }
 
         public IActionResult Logout()

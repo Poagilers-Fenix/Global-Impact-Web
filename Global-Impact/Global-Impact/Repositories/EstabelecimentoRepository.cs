@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Global_Impact.Repositories
@@ -16,6 +17,12 @@ namespace Global_Impact.Repositories
         public EstabelecimentoRepository(WefeedContext context)
         {
             _context = context;
+        }
+
+        public Estabelecimento BuscarPor(Expression<Func<Estabelecimento, bool>> filtro)
+        {
+            return _context.Estabelecimentos.Where(filtro)
+                .Include(e => e.Endereco).FirstOrDefault();
         }
 
         public Estabelecimento BuscarPorId(int id)

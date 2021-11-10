@@ -7,13 +7,13 @@
     <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
         <ul class="navbar-nav flex-grow-1 d-flex justify-content-end mr-5">
             <li class="nav-item">
-                <a class="nav-link current-page" style="font-size:22px; color: var(--main-red); font-weight: bold" asp-controller="Home" asp-action="Index">Página Inicial</a>
+                <a class="nav-link current-page" style="color: var(--main-red); font-weight: bold" asp-controller="Home" asp-action="Index">Página Inicial</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark another-page" style="font-size:22px" asp-controller="doacao" asp-action="cadastrar">Doar Alimento</a>
+                <a class="nav-link text-dark another-page" asp-controller="doacao" asp-action="cadastrar">Doar Alimento</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark another-page" style="font-size:22px" asp-controller="Ong" asp-action="Index">ONGs</a>
+                <a class="nav-link text-dark another-page" asp-controller="Ong" asp-action="Index">ONGs</a>
             </li>
         </ul>
     </div>
@@ -29,8 +29,8 @@
                     alimento disponível. É a forma de acabar com o desperdício e com a fome em apenas uma solução.
                 </p>
             </div>
-            <div class="col-3 m-4">
-                <img src="~/img/delivery-man.png" width="120" />
+            <div class="col-3 m-4" id="div-img">
+                <img src="~/img/delivery-man.png" id="delivery-man" width="120" />
             </div>
         </div>
 
