@@ -10,7 +10,7 @@
                 <a class="nav-link current-page" style="font-size:22px; color: var(--main-red); font-weight: bold" asp-controller="Home" asp-action="Index">Página Inicial</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark another-page" style="font-size:22px" asp-controller="Home" asp-action="NovaDoacao">Doar Alimento</a>
+                <a class="nav-link text-dark another-page" style="font-size:22px" asp-controller="doacao" asp-action="cadastrar">Doar Alimento</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-dark another-page" style="font-size:22px" asp-controller="Ong" asp-action="Index">ONGs</a>
@@ -36,7 +36,7 @@
 
         <div>
             <div class="col-12">
-                <a asp-action="NovaDoacao" class="d-flex align-items-center link">
+                <a asp-action="Cadastrar" asp-controller="doacao" class="d-flex align-items-center link">
                     <h4 class="title">Doações</h4>
                     <img src="~/img/add-button.png" width="40" />
                 </a>
