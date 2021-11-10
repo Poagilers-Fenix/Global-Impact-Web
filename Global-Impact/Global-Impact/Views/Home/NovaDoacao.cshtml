@@ -20,12 +20,12 @@
 
 <div class="b-radius box-shadow h-100 w-100 d-flex">
     <div class="h-100 col-8">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between align-items-center">
             <h3 class="title m-5" style="height: 10%">@ViewData["title"]</h3>
-            <form class="d-flex" asp-action="index" asp-controller="Ong">
-                <input name="pesquisa" class="form-control" id="pesquisa" placeholder="Procurar ong por endereço" style="border-radius: 10px 0 0 10px;" />
-                <button type="submit" class="btn btn-sm p-0 col-3" style="background-color:  var(--light-red); border-radius: 0 10px 10px 0; height: 30%;">
-                    <span class="material-icons mt-1 text-white">
+            <form class="d-flex col-6" asp-action="index" asp-controller="Ong">
+                <input name="pesquisa" class="form-control col-9" id="pesquisa" placeholder="Procurar item por nome" style="border-radius: 10px 0 0 10px;" />
+                <button type="submit" class="btn btn-sm col-3" style="background-color: var(--light-red); border-radius: 0 10px 10px 0; height: 20%">
+                    <span class="material-icons text-white">
                         search
                     </span>
                 </button>
@@ -35,25 +35,34 @@
             <div class="d-flex flex-wrap">
                 @foreach (var item in ViewBag.itens)
                 {
-                    <div class="box-shadow h-25 b-radius m-2" style="width: 30%">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="paragraph m-3">@item.Nome</h6>
-                            <input name="@item.ItemId" type="checkbox" class="my-auto mr-3" />
-                        </div>
-                        <div class="d-flex">
-                            <p class="paragraph" style="font-size: 12px">Quantidade</p>
-                            <input class="col-2" />
-                            <div class="d-flex flex-column align-items-center">
-                                <label>un/Kg/L</label>
-                                <input class="col-3" />
-                            </div>
+                <div class="box-shadow b-radius m-2 item-card" style="width: 45%;">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="paragraph m-3">@item.Nome</h6>
+                        <input name="@item.ItemId" type="checkbox" class="my-auto mr-3" />
+                    </div>
+                    <div class="d-flex">
+                        <p class="col-4 mt-4" style="font-size: 1rem">Quantidade</p>
+                        <input class="col-4 mt-4 form-control" />
+                        <div class="d-flex flex-column col-4 mb-4 align-items-center">
+                            <label style="font-size: .8rem;">un/Kg/L</label>
+                            <select class="col-8 form-control">
+                                <option disabled class="form-control">--Selecione uma unidade de medida--</option>
+                            </select>
                         </div>
                     </div>
+                    <div>
+
+                    </div>
+                </div>
                 }
             </div>
         </div>
     </div>
     <div class="col-3 box-shadow b-radius m-auto" style="background-color: var(--light-grey); height: 80%; margin-top: 5%">
         <h5 class="text-danger d-flex justify-content-center mt-3">Itens a doar</h5>
+        <div>
+
+        </div>
+        <a class="px-4 py-2 text-light d-flex justify-content-end" style="background-color: var(--light-red); border-radius: 10px; font-size: 14px">Selecionar destino →</a>
     </div>
 </div>
