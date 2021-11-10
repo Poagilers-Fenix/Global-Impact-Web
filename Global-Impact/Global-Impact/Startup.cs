@@ -62,6 +62,8 @@ namespace Global_Impact
 
             app.UseHttpsRedirection();
 
+            app.UseSession();
+
             app.UseRouting();
 
             app.UseAuthorization();

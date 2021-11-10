@@ -5,11 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Cardapp.WebApp.SessionHelper
+namespace Global_Impact.SessionHelpers
 {
     public static class SessionHelper
     {
-
         //Seta um objeto como json como variável na sessão
         public static void SetObjectAsJson(this ISession session, string key, object value)
         {
@@ -23,7 +22,5 @@ namespace Cardapp.WebApp.SessionHelper
 
             return value == null ? default : JsonConvert.DeserializeObject<T>(value);
         }
-
-
     }
 }

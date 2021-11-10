@@ -1,5 +1,6 @@
 ﻿using Global_Impact.Models;
 using Global_Impact.Persistence;
+using Global_Impact.SessionHelpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
@@ -32,11 +33,17 @@ namespace Global_Impact.Controllers
             return View();
         }
 
-        public IActionResult NovaDoacao()
+        [HttpPost]
+        public IActionResult Login(Estabelecimento estab)
         {
-            //ViewBag.ongs = _context.ONGs.ToList();
-            ViewBag.itens = _context.Itens.ToList();
-            return View();
+            HttpContext.Session.SetObjectAsJson("EstabSessao", estab);
+            return RedirectToAction("index");
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

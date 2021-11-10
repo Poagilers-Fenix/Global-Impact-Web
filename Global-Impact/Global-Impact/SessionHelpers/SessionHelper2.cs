@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Cardapp.WebApp.SessionHelper
+namespace Global_Impact.SessionHelpers
 {
     public class SessionHelper2
     {
@@ -28,3 +28,4 @@ namespace Cardapp.WebApp.SessionHelper
         }
     }
 }
+

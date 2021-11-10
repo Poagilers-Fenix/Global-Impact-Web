@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@using Global_Impact.SessionHelpers
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -21,9 +25,21 @@
                 @RenderSection("Links")
 
                 <div class="m-0 p-0">
-                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                        <img src="~/img/portaFechada.png" id="porta" width="50" />
-                    </a>
+                    @if (HttpContextAccessor.HttpContext.Session.Get("EstabSessao") != null)
+                    {
+                        <a class="navbar-brand" asp-controller="Home" asp-action="Logout">
+                            <img src="~/img/portaFechada.png" id="porta" width="50" />
+                        </a>
+                    }
+                    else
+                    {
+                        <div class="d-flex flex-column justify-content-center">
+                            <a class="btn" style="background-color: var(--light-red); border-radius: 5px; color: #fff;" asp-action="Login" asp-controller="home">Login</a>
+                            <a class="link" asp-action="Cadastrar" asp-controller="estabelecimento">Realizar cadastro</a>
+                        </div>
+                    }
+
+
                 </div>
             </div>
         </nav>
