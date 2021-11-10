@@ -11,17 +11,21 @@ namespace Global_Impact.Models
     [Table("Tb_Doacao")]
     public class Doacao
     {
-        [Column("cd_doacao")]
         public int DoacaoId { get; set; }
-        [Column("cd_estab")]
+
+        // muitos-para-um estabelecimento
         [HiddenInput]
         public int CodigoEstab { get; set; }
-        [Column("cd_ong")]
+
+        // muitos-para-um ong
         [HiddenInput]
         public int CodigoOng { get; set; }
+
         [DataType(DataType.Date)]
-        [Column("dt_doacao")]
         public DateTime DataDoacao { get; set; }
-        public IList<DoacaoAlimento> DoacoesAlimentos { get; set; }
+
+        // muitos-para-muitos
+        public IList<DoacaoItem> DoacoesItens { get; set; }
+
     }
 }

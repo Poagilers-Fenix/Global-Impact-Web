@@ -43,6 +43,8 @@ namespace Global_Impact
             }
             app.UseStaticFiles();
 
+            app.UseHttpsRedirection();
+
             app.UseRouting();
 
             app.UseAuthorization();

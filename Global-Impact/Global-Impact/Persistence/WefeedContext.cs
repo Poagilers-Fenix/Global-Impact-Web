@@ -14,22 +14,22 @@ namespace Global_Impact.Persistence
         public DbSet<Ong> ONGs { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Doacao> Doacoes { get; set; }
-        public DbSet<Alimento> Alimentos { get; set; }
-        public DbSet<DoacaoAlimento> DoacoesAlimentos { get; set; }
+        public DbSet<Item> Itens { get; set; }
+        public DbSet<DoacaoItem> DoacoesItens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<DoacaoAlimento>().HasKey(p => new { p.DoacaoId, p.AlimentoId });
+            modelBuilder.Entity<DoacaoItem>().HasKey(p => new { p.DoacaoId, p.ItemId });
 
-            modelBuilder.Entity<DoacaoAlimento>()
+            modelBuilder.Entity<DoacaoItem>()
             .HasOne(p => p.Doacao)
-            .WithMany(m => m.DoacoesAlimentos)
+            .WithMany(m => m.DoacoesItens)
             .HasForeignKey(m => m.DoacaoId);
 
-            modelBuilder.Entity<DoacaoAlimento>()
-            .HasOne(p => p.Alimento)
-            .WithMany(m => m.DoacoesAlimentos)
-            .HasForeignKey(m => m.AlimentoId);
+            modelBuilder.Entity<DoacaoItem>()
+            .HasOne(p => p.Item)
+            .WithMany(m => m.DoacoesItens)
+            .HasForeignKey(m => m.ItemId);
 
             base.OnModelCreating(modelBuilder);
         }
