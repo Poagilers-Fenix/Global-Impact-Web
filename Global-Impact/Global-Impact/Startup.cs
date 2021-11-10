@@ -1,4 +1,5 @@
 using Global_Impact.Persistence;
+using Global_Impact.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -38,6 +39,12 @@ namespace Global_Impact
                 options.IdleTimeout = TimeSpan.FromMinutes(20);
             });
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddScoped<IEstabelecimentoRepository, EstabelecimentoRepository>();
+            services.AddScoped<IItemRepository, ItemRepository>();
+            services.AddScoped<IOngRepository, OngRepository>();
+            services.AddScoped<IDoacaoRepository, DoacaoRepository>();
+            services.AddScoped<IDoacaoItemRepository, DoacaoItemRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
