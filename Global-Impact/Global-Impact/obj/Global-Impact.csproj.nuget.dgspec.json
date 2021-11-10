@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Arquivos de Programas (x86)\\Git-Hub\\Global-Impact-Web\\Global-Impact\\Global-Impact\\Global-Impact.csproj": {}
+    "D:\\VisualStudio Projects\\Global-Impact-Web\\Global-Impact-Web\\Global-Impact\\Global-Impact\\Global-Impact.csproj": {}
   },
   "projects": {
-    "D:\\Arquivos de Programas (x86)\\Git-Hub\\Global-Impact-Web\\Global-Impact\\Global-Impact\\Global-Impact.csproj": {
+    "D:\\VisualStudio Projects\\Global-Impact-Web\\Global-Impact-Web\\Global-Impact\\Global-Impact\\Global-Impact.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Arquivos de Programas (x86)\\Git-Hub\\Global-Impact-Web\\Global-Impact\\Global-Impact\\Global-Impact.csproj",
+        "projectUniqueName": "D:\\VisualStudio Projects\\Global-Impact-Web\\Global-Impact-Web\\Global-Impact\\Global-Impact\\Global-Impact.csproj",
         "projectName": "Global-Impact",
-        "projectPath": "D:\\Arquivos de Programas (x86)\\Git-Hub\\Global-Impact-Web\\Global-Impact\\Global-Impact\\Global-Impact.csproj",
-        "packagesPath": "C:\\Users\\gih_m\\.nuget\\packages\\",
-        "outputPath": "D:\\Arquivos de Programas (x86)\\Git-Hub\\Global-Impact-Web\\Global-Impact\\Global-Impact\\obj\\",
+        "projectPath": "D:\\VisualStudio Projects\\Global-Impact-Web\\Global-Impact-Web\\Global-Impact\\Global-Impact\\Global-Impact.csproj",
+        "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
+        "outputPath": "D:\\VisualStudio Projects\\Global-Impact-Web\\Global-Impact-Web\\Global-Impact\\Global-Impact\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\gih_m\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
