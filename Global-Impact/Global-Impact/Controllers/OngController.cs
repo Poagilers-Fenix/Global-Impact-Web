@@ -65,7 +65,7 @@ namespace Global_Impact.Controllers
             }
             _context.ONGs.Add(ong);
             _context.SaveChanges();
-            TempData["msg"] = "Ong cadastrada com sucesso!";
+            TempData["Sucesso"] = "Ong cadastrada com sucesso!";
             return View();
         }
     }
