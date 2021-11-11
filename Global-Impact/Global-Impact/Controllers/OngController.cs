@@ -54,5 +54,19 @@ namespace Global_Impact.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Cadastrar(Ong ong)
+        {
+            if (!ModelState.IsValid)
+            {
+                TempData["Erro"] = "Erro ao cadastrar a ong, verifique se as informações estão corretas.";
+                return View();
+            }
+            _context.ONGs.Add(ong);
+            _context.SaveChanges();
+            TempData["msg"] = "Ong cadastrada com sucesso!";
+            return View();
+        }
     }
 }
