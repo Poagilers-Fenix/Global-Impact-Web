@@ -20,7 +20,6 @@ namespace Global_Impact.Models
 
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "A data de validade não pode ficar vazia.")]
-        [MinLength(10, ErrorMessage = "A data está incompleta.")]
         [Display(Name = "Data de Validade")]
         public DateTime DataValidade { get; set; }
 
@@ -36,6 +35,6 @@ namespace Global_Impact.Models
     }
     public enum UnidadeMedida
     {
-        Unidade, Quilo, Litro
+        un, Kg, L
     }
 }

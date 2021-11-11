@@ -48,7 +48,7 @@ namespace Global_Impact.Controllers
                     return RedirectToAction("index");
                 }
             }
-            TempData["msg"] = "E-mail ou senha incorretos!";
+            TempData["Erro"] = "E-mail ou senha incorretos!";
             return View();
         }
 
