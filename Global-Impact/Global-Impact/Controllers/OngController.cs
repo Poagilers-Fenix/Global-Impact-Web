@@ -21,27 +21,7 @@ namespace Global_Impact.Controllers
 
         public IActionResult Index()
         {
-            IList<Ong> listaOng = new List<Ong>();
-
-            Endereco enderecoMock = new Endereco();
-            enderecoMock.Cep = "03850005";
-            enderecoMock.Logradouro = "Rua Dr Gabriel de Resende";
-            enderecoMock.Bairro = "Vila Invernada";
-            enderecoMock.Cidade = "São Paulo";
-            enderecoMock.UF = "SP";
-            enderecoMock.Numero = "122";
-
-            Ong ongMock = new Ong();
-            ongMock.Nome = "ong animal";
-            ongMock.Descricao = "uma ong legal";
-            ongMock.Endereco = enderecoMock;
-            ongMock.Telefone = "1222337460";
-            ongMock.Foto = "https://quizizz.com/media/resource/gs/quizizz-media/quizzes/007aae49-a1f2-4d3b-b75b-ee004690adf3";
-
-
-
-            listaOng.Add(ongMock);
-
+            IList<Ong> listaOng = _context.ONGs.ToList();
             return View(listaOng);
         }
 
