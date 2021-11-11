@@ -21,7 +21,14 @@
         </ul>
     </div>
 }
-<p>@TempData["Erro"]</p>
+@if (TempData["Sucesso"] != null)
+{
+    <Feedback Texto="@TempData["Sucesso"]" is-error="false"></Feedback>
+}
+else
+{
+    <Feedback Texto="@TempData["Erro"]" is-error="true"></Feedback>
+}
 <div class="pre-scrollable d-flex box-shadow flex-column align-items-center w-100 mh-100 col-12 ma-2 px-4 pb-5" style="background-color: #F8F8F8;">
     <form asp-action="Cadastrar" asp-controller="Ong" class="w-75">
         <partial name="_FormOng" />
