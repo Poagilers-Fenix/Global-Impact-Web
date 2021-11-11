@@ -87,6 +87,11 @@ body {
         text-decoration-color: var(--main-red);
     }
 
+@media screen and (max-width: 1200px) {
+    .text-ong {
+        font-size: 16px;
+    }
+}
 
 @media screen and (max-width: 1320px) {
     .item-card {
@@ -95,6 +100,11 @@ body {
 }
 
 @media screen and (min-width: 1900px) {
+
+    .welcome-div {
+        margin-top: 1.6rem;
+    }
+
     .item-card {
         width: 30% !important;
     }
@@ -102,14 +112,12 @@ body {
     .title {
         color: var(--main-red);
         font-weight: bold;
-        font-size: 2rem;
+        font-size: 2.1rem;
         margin: 1.5rem;
     }
 
     .paragraph, .nav-link {
-        /*text-indent: 5%;*/
-        font-size: 1.7rem;
-    /*margin-left: 1.5rem;*/
+        font-size: 1.8rem;
     }
 
     .btn-login {
