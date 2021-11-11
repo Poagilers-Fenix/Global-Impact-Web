@@ -1,7 +1,50 @@
-﻿@{
+﻿@model Item
+
+@{
     ViewData["title"] = "Cadastro de item";
 }
 
-<div>
-    <h4 class="title">@ViewData["title"]</h4>
+
+@section Links{
+    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+        <ul class="navbar-nav flex-grow-1 d-flex justify-content-end mr-5">
+            <li class="nav-item">
+                <a class="nav-link text-dark another-page" asp-controller="Home" asp-action="Index">Página inicial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark another-page" asp-controller="doacao" asp-action="cadastrar">Doar Alimento</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark another-page" asp-controller="Ong" asp-action="Index">ONGs</a>
+            </li>
+        </ul>
+    </div>
+}
+
+<div class="b-radius box-shadow h-100 w-100 d-flex">
+    <div class="d-flex flex-column justify-content-center align-items-center col-12">
+        <h4 class="title m-4">@ViewData["title"]</h4>
+
+        @if (TempData["Sucesso"] != null)
+        {
+            <Feedback Texto="@TempData["Sucesso"]" is-error="false"></Feedback> 
+        }
+        else
+        {
+            <Feedback Texto="@TempData["Erro"]" is-error="true"></Feedback>
+        }
+
+        <form asp-action="cadastrar" class="col-4">
+            <div class="form-group">
+                <label asp-for="Nome"></label>
+                <input asp-for="Nome" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Foto"></label>
+                <input asp-for="Foto" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-outline">Adicionar</button>
+        </form>
+    </div>
 </div>

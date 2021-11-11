@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Global_Impact.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,13 @@ namespace Global_Impact.Controllers
     {
         public IActionResult Cadastrar()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Cadastrar(Item item)
+        {
+            TempData["Sucesso"] = $"Item '{item.Nome}' cadastrado!";
             return View();
         }
     }

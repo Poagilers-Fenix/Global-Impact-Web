@@ -44,6 +44,18 @@ body {
     color: #fff;
 }
 
+.btn-outline {
+    background-color: #fff;
+    border: var(--main-red) solid 1px;
+    color: var(--main-red);
+    border-radius: 10px;
+}
+
+    .btn-outline:hover {
+        background-color: var(--light-red);
+        color: #fff;
+    }
+
 .info-link {
     font-size: .8rem;
     margin: 3%;
