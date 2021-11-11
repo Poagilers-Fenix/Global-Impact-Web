@@ -1,7 +1,7 @@
-﻿@model Ong 
+﻿@model Ong
 
 @{
-    ViewData["title"] = "Detalhes da ong";
+    ViewData["title"] = "Cadastrar uma ong";
 }
 <meta charset="utf-8" />
 
@@ -21,7 +21,13 @@
         </ul>
     </div>
 }
-
-<div class="d-flex box-shadow flex-column" style="height: 110%; width: 98vw; margin: 1vw; border-radius: 30px; background-color: #F8F8F8">
-    @Model.Nome
+<p>@TempData["Erro"]</p>
+<div class="pre-scrollable d-flex box-shadow flex-column align-items-center w-100 mh-100 col-12 ma-2 px-4 pb-5" style="background-color: #F8F8F8;">
+    <form asp-action="Cadastrar" asp-controller="Ong" class="w-75">
+        <partial name="_FormOng" />
+        <div class="d-flex justify-content-center">
+            <a asp-action="index" asp-controller="ong" class="btn btn-danger px-5" style="background-color: var(--main-red);">Voltar</a>
+            <input type="submit" value="Salvar" class="btn ml-3 px-5 text-white" style="background-color: var(--header-bg);" />
+        </div>
+    </form>
 </div>
