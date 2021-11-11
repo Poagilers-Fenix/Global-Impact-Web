@@ -1,5 +1,6 @@
 ﻿using Global_Impact.Models;
 using Global_Impact.Persistence;
+using Global_Impact.Repositories;
 using Global_Impact.SessionHelpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +14,11 @@ namespace Global_Impact.Controllers
     public class DoacaoController : Controller
     {
 
-        private WefeedContext _context;
+        private IItemRepository _itemRepository;
 
-        public DoacaoController(WefeedContext context)
+        public DoacaoController(IItemRepository itemRepository)
         {
-            _context = context;
+            _itemRepository = itemRepository;
         }
 
         public IActionResult Index()
@@ -25,7 +26,7 @@ namespace Global_Impact.Controllers
             return View();
         }
 
-        public IActionResult Cadastrar()
+        public IActionResult Cadastrar(string nome)
         {
             IList<DoacaoItem> lista = HttpContext.Session
                 .GetObjectFromJson<List<DoacaoItem>>("ListaDoacao");
@@ -34,7 +35,8 @@ namespace Global_Impact.Controllers
                 lista = new List<DoacaoItem>();
                 HttpContext.Session.SetObjectAsJson("ListaDoacao", lista);
             }
-            ViewBag.itens = _context.Itens.ToList();
+            ViewBag.itens = _itemRepository.BuscarPor(i => 
+                i.Nome.ToLower().Contains(nome) || nome == null);
             ViewBag.lista = lista;
             return View();
         }
