@@ -11,7 +11,7 @@
     <WebStackScaffolding_DbContextTypeFullName>WeFeedAPI.Models.WefeedContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <ActiveDebugProfile>WeFeedAPI</ActiveDebugProfile>
-    <NameOfLastUsedPublishProfile>D:\VisualStudio Projects\Global-Impact-Web\Global-Impact-Web\Global-Impact\WeFeedAPI\Properties\PublishProfiles\WeFeedAPI - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>D:\VisualStudio Projects\Global-Impact-Web\Global-Impact-Web\Global-Impact\WeFeedAPI\Properties\PublishProfiles\wefeed - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
