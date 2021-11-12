@@ -26,10 +26,23 @@ namespace Global_Impact.Controllers
         [HttpPost]
         public IActionResult Cadastrar(Item item)
         {
-            _itemRepository.Cadastrar(item);
-            _itemRepository.Salvar();
-            TempData["Sucesso"] = $"Item '{item.Nome}' cadastrado!";
-            return RedirectToAction("Cadastrar");
+            if (ModelState.IsValid)
+            {
+                IList<Item> itemBanco = _itemRepository.BuscarPor(i => i.Nome == item.Nome);
+                foreach(var i in itemBanco)
+                {
+                    if (i.Nome.ToLower() != item.Nome.ToLower())
+                    {
+                        _itemRepository.Cadastrar(item);
+                        _itemRepository.Salvar();
+                        TempData["Sucesso"] = $"Item '{item.Nome}' cadastrado!";
+                        return RedirectToAction("Cadastrar");
+                    }
+                    TempData["Erro"] = $"O item que você está tentando adicionar já existe!";
+                    return View();
+                }
+            }
+            return View();
         }
     }
 }
