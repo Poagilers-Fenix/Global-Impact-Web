@@ -24,7 +24,7 @@ namespace WeFeedAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Estabelecimento>>> GetEstabelecimentos()
         {
-            return await _context.Estabelecimentos.ToListAsync();
+            return await _context.Estabelecimentos.Include(a => a.Endereco).ToListAsync();
         }
 
         // GET: api/Estabelecimentoes/5

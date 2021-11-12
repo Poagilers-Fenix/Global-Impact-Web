@@ -24,7 +24,7 @@ namespace WeFeedAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Ong>>> GetONGs()
         {
-            return await _context.ONGs.ToListAsync();
+            return await _context.ONGs.Include(a => a.Endereco).ToListAsync();
         }
 
         // GET: api/Ongs/5
