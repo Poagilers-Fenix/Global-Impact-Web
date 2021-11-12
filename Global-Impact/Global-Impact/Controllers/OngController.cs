@@ -7,26 +7,28 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
+using Global_Impact.Repositories;
 
 namespace Global_Impact.Controllers
 {
     public class OngController : Controller
     {
-        private WefeedContext _context;
+        private IOngRepository _repository;
 
-        public OngController(WefeedContext context)
+        public OngController(IOngRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
         public IActionResult Index()
         {
-            IList<Ong> listaOng = _context.ONGs.ToList();
+            IList<Ong> listaOng = _repository.Listar();
             return View(listaOng);
         }
 
-        public IActionResult PaginaOng(Ong ong)
+        public IActionResult PaginaOng(int id)
         {
+            Ong ong = _repository.BuscarPorId(id);
             return View(ong);
         }
 
@@ -43,9 +45,14 @@ namespace Global_Impact.Controllers
                 TempData["Erro"] = "Erro ao cadastrar a ong, verifique se as informações estão corretas.";
                 return View();
             }
-            _context.ONGs.Add(ong);
-            _context.SaveChanges();
+            _repository.Cadastrar(ong);
+            _repository.Salvar();
             TempData["Sucesso"] = "Ong cadastrada com sucesso!";
+            return View();
+        }
+
+        public IActionResult DeletarOng()
+        {
             return View();
         }
     }
