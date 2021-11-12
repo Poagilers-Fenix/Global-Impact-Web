@@ -48,7 +48,7 @@ namespace Global_Impact.Controllers
             foreach (var i in itens) 
             { 
                 Item item = i;
-                doacaoItem.Item = item; 
+                doacaoItem.ItemId = i.ItemId;
             }
 
             IList<DoacaoItem> lista = HttpContext.Session

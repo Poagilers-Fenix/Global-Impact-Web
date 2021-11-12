@@ -82,8 +82,9 @@ namespace Global_Impact.Controllers
                     _doacaoItemRepository.Cadastrar(di);
                     _doacaoItemRepository.Salvar();
                 }
+                HttpContext.Session.SetObjectAsJson("ListaDoacao", new List<DoacaoItem>());
                 TempData["Sucesso"] = "Doação realizada! Um entregador logo chegará para retirar os itens.";
-                return RedirectToAction("EscolherOng");
+                return RedirectToAction("Cadastrar", "Doacao");
             }
             TempData["Erro"] = "Algo deu errado! Tente novamente mais tarde.";
             return RedirectToAction("EscolherOng");
