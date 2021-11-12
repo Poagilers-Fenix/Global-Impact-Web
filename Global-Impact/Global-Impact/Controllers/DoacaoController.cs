@@ -49,6 +49,7 @@ namespace Global_Impact.Controllers
             { 
                 Item item = i;
                 doacaoItem.ItemId = i.ItemId;
+                doacaoItem.Item = i;
             }
 
             IList<DoacaoItem> lista = HttpContext.Session
@@ -61,6 +62,18 @@ namespace Global_Impact.Controllers
         [HttpPost]
         public IActionResult Remover(int id)
         {
+            Console.WriteLine(id);
+            IList<DoacaoItem> lista = HttpContext.Session
+                .GetObjectFromJson<List<DoacaoItem>>("ListaDoacao");
+            foreach (var item in lista)
+            {
+                if (item.Item.ItemId == id)
+                {
+                    lista.Remove(item);
+                    HttpContext.Session.SetObjectAsJson("ListaDoacao", lista);
+                    break;
+                }
+            }
             return RedirectToAction("Cadastrar");
         }
     }
