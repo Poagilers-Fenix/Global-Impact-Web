@@ -12,21 +12,29 @@ namespace Global_Impact.Models
     {
         public int OngId { get; set; }
 
+        [Display(Name = "Nome da ong")]
         [Required(ErrorMessage = "O nome da ONG não pode ficar vazio.")]
-        [MinLength(3, ErrorMessage = "O nome da ONG deve ter no mínimo 3 caracteres.")]
+        [MinLength(3, ErrorMessage = "O nome da ONG deve ter, no mínimo, 3 caracteres.")]
+        [MaxLength(40, ErrorMessage = "O nome da ONG deve ter, no máximo, 40 caracteres.")]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "A descrição da ONG não pode ficar vazia.")]
-        [MinLength(50, ErrorMessage = "A descrição da ONG deve ter no mínimo 50 caracteres.")]
+        [Display(Name = "Descrição da ong")]
+        [Required(ErrorMessage = "Informe a descrição da ONG.")]
+        [MinLength(25, ErrorMessage = "A descrição da ONG deve ter, no mínimo, 25 caracteres.")]
+        [MaxLength(125, ErrorMessage = "A descrição da ONG deve ter, no máximo, 125 caracteres.")]
         public string Descricao { get; set; }
 
         // um-para-um endereco
         public Endereco Endereco { get; set; }
 
-        [Required(ErrorMessage = "O telefone não pode ficar vazio.")]
-        [MinLength(10, ErrorMessage = "O telefone está incompleto. Lembre-se de colocar o DDD.")]
+        [Display(Name = "Telefone")]
+        [Required(ErrorMessage = "Informe o telefone")]
+        [RegularExpression(@"(^[(])([0-9]{2})([)])( {1})([9]{1})?([0-9]{3,4})([-])([0-9]{4})", ErrorMessage = "O telefone deve seguir o seguinte formato:  (11) 91234-5678, ou (11) 1234-5678")]
+        [MinLength(10)]
+        [MaxLength(15)]
         public string Telefone { get; set; }
 
+        [MaxLength(1000)]
         public string Foto { get; set; }
 
     }

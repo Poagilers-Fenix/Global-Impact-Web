@@ -19,7 +19,7 @@ namespace Global_Impact.Models
         public Item Item { get; set; }
 
         [DataType(DataType.Date)]
-        [Required(ErrorMessage = "A data de validade não pode ficar vazia.")]
+        [Required(ErrorMessage = "Informe a data de validade.")]
         [Display(Name = "Data de Validade")]
         public DateTime DataValidade { get; set; }
 
@@ -27,9 +27,11 @@ namespace Global_Impact.Models
         [Column(TypeName = "decimal(5,2)")] // máx 999,99
         public decimal Quantidade { get; set; }
 
-        [Required(ErrorMessage = "A unidade de medida não pode ficar vazia")]
+        [Required(ErrorMessage = "Selecione uma unidade de medida")]
         public UnidadeMedida UnidadeMedida { get; set; }
 
+        [Display(Name = "Foto")]
+        [MaxLength(1000)]
         public string Foto { get; set; }
 
     }

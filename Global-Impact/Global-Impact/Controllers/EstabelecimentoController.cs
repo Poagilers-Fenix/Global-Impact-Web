@@ -35,11 +35,15 @@ namespace Global_Impact.Controllers
         [HttpPost]
         public IActionResult Cadastrar(Estabelecimento estab)
         {
-            _estabRepository.Cadastrar(estab);
-            _estabRepository.Salvar();
-            HttpContext.Session.SetObjectAsJson("EstabSessao", estab);
-            TempData["msg"] = "Estabelecimento cadastrado com sucesso!";
-            return RedirectToAction("Index", "home");
+            if (ModelState.IsValid)
+            {
+                _estabRepository.Cadastrar(estab);
+                _estabRepository.Salvar();
+                HttpContext.Session.SetObjectAsJson("EstabSessao", estab);
+                TempData["msg"] = "Estabelecimento cadastrado com sucesso!";
+                return RedirectToAction("Index", "home");
+            }
+            return View();
         }
     }
 }

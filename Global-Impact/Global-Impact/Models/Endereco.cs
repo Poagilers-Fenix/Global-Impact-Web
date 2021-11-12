@@ -12,31 +12,39 @@ namespace Global_Impact.Models
     {
         public int EnderecoId { get; set; }
 
-        [Display(Name = "CEP")]
-        [Required]
+        [MinLength(9, ErrorMessage = "O cep deve ter 8 caracteres.")]
+        [MaxLength(9, ErrorMessage = "O cep deve ter 8 caracteres.")]
+        [Display(Name = "CEP"), Required(ErrorMessage = "Informe o cep.")]
         public string Cep { get; set; }
 
-        [MinLength(4, ErrorMessage = "O nome do bairro precisa ter mais de 4 caracteres.")]
-        [Required]
+        [MinLength(4, ErrorMessage = "O nome do bairro precisa ter, no mínimo, 4 caracteres.")]
+        [MaxLength(30, ErrorMessage = "O nome do bairro precisa ter, no máximo, 30 caracteres.")]
+        [Display(Name = "Bairro"), Required(ErrorMessage = "Informe o bairro.")]
         public string Bairro { get; set; }
 
-        [MinLength(4, ErrorMessage = "O nome da cidade precisa ter mais de 4 caracteres.")]
-        [Required]
+        [MinLength(4, ErrorMessage = "O nome da cidade precisa ter, no mínimo, 4 caracteres.")]
+        [MaxLength(30, ErrorMessage = "O nome da cidade precisa ter, no máximo, 30 caracteres.")]
+        [Display(Name = "Cidade"), Required(ErrorMessage = "Informe a cidade.")]
         public string Cidade { get; set; }
 
-        [Required]
+        [MinLength(2, ErrorMessage = "O UF precisa ter 2 caracteres.")]
+        [MaxLength(2, ErrorMessage = "O UF precisa ter 2 caracteres.")]
+        [Display(Name = "UF (Unidade Federativa)"), Required(ErrorMessage = "Informe a UF.")]
         public string UF { get; set; }
 
-        [Required]
-        [MinLength(5, ErrorMessage = "O nome do Logradouro deve ter 5 caracteres ou mais.")]
-        [MaxLength(40, ErrorMessage = "O nome do Logradouro deve ter 40 caracteres ou menos.")]
+        [MinLength(5, ErrorMessage = "O nome do Logradouro deve ter, no mínimo, 5 caracteres.")]
+        [MaxLength(40, ErrorMessage = "O nome do Logradouro precisa ter, no máximo, 40 caracteres.")]
+        [Display(Name = "Logradouro"), Required(ErrorMessage = "Informe o Logradouro.")]
         public string Logradouro { get; set; }
 
         [Display(Name = "Número")]
-        [Required(ErrorMessage = "O número não pode ficar vazio.")]
-        [MinLength(2, ErrorMessage = "O número deve ter, no mínimo 2, caracteres.")]
+        [Required(ErrorMessage = "Informe o número.")]
+        [MinLength(2, ErrorMessage = "Deve ter, no mínimo, 2 números.")]
+        [MaxLength(5)]
         public string Numero { get; set; }
 
+        [Display(Name = "Complemento")]
+        [MaxLength(30)]
         public string Complemento { get; set; }
 
     }
