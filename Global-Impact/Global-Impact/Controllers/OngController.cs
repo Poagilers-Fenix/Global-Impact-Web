@@ -7,46 +7,28 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
+using Global_Impact.Repositories;
 
 namespace Global_Impact.Controllers
 {
     public class OngController : Controller
     {
-        private WefeedContext _context;
+        private IOngRepository _repository;
 
-        public OngController(WefeedContext context)
+        public OngController(IOngRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
         public IActionResult Index()
         {
-            IList<Ong> listaOng = new List<Ong>();
-
-            Endereco enderecoMock = new Endereco();
-            enderecoMock.Cep = "03850005";
-            enderecoMock.Logradouro = "Rua Dr Gabriel de Resende";
-            enderecoMock.Bairro = "Vila Invernada";
-            enderecoMock.Cidade = "São Paulo";
-            enderecoMock.UF = "SP";
-            enderecoMock.Numero = "122";
-
-            Ong ongMock = new Ong();
-            ongMock.Nome = "ong animal";
-            ongMock.Descricao = "uma ong legal";
-            ongMock.Endereco = enderecoMock;
-            ongMock.Telefone = "1222337460";
-            ongMock.Foto = "https://quizizz.com/media/resource/gs/quizizz-media/quizzes/007aae49-a1f2-4d3b-b75b-ee004690adf3";
-
-
-
-            listaOng.Add(ongMock);
-
+            IList<Ong> listaOng = _repository.Listar();
             return View(listaOng);
         }
 
-        public IActionResult PaginaOng(Ong ong)
+        public IActionResult PaginaOng(int id)
         {
+            Ong ong = _repository.BuscarPorId(id);
             return View(ong);
         }
 
@@ -63,9 +45,14 @@ namespace Global_Impact.Controllers
                 TempData["Erro"] = "Erro ao cadastrar a ong, verifique se as informações estão corretas.";
                 return View();
             }
-            _context.ONGs.Add(ong);
-            _context.SaveChanges();
+            _repository.Cadastrar(ong);
+            _repository.Salvar();
             TempData["Sucesso"] = "Ong cadastrada com sucesso!";
+            return View();
+        }
+
+        public IActionResult DeletarOng()
+        {
             return View();
         }
     }

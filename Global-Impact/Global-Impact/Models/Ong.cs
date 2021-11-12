@@ -20,7 +20,6 @@ namespace Global_Impact.Models
         [MinLength(50, ErrorMessage = "A descrição da ONG deve ter no mínimo 50 caracteres.")]
         public string Descricao { get; set; }
 
-        [Required]
         // um-para-um endereco
         public Endereco Endereco { get; set; }
 
