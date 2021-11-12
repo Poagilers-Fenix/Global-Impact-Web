@@ -107,9 +107,12 @@
                             <p class="text-list col-4">@item.Quantidade @item.UnidadeMedida.ToString()</p>
 
                             @*<a asp-action="remover" asp-route-id="@item.DoacaoItemId">*@
-                            <a class="btn p-0">
-                                <span class="material-icons col-4" style="color: var(--light-red)">delete</span>
-                            </a>
+                            <form asp-action="remover">
+                                <input type="hidden" name="id" value="@item.Item.ItemId" />
+                                <button class="btn p-0">
+                                    <span class="material-icons col-4" style="color: var(--light-red)">delete</span>
+                                </button>
+                            </form>
                         </li>
                     }
                 }
@@ -128,7 +131,7 @@
                 <a asp-action="EscolherOng" asp-controller="ong" class="px-4 py-2 text-light btn-login btn" style="background-color: var(--light-red);
                         border-radius: 10px;">
                     Selecionar destino →
-                </a>   
+                </a>
             }
         </div>
     </div>
