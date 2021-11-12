@@ -1,4 +1,8 @@
-﻿using Global_Impact.Persistence;
+﻿using Global_Impact.Models;
+using Global_Impact.Persistence;
+using Global_Impact.Repositories;
+using Global_Impact.SessionHelpers;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,11 +14,11 @@ namespace Global_Impact.Controllers
     public class DoacaoController : Controller
     {
 
-        private WefeedContext _context;
+        private IItemRepository _itemRepository;
 
-        public DoacaoController(WefeedContext context)
+        public DoacaoController(IItemRepository itemRepository)
         {
-            _context = context;
+            _itemRepository = itemRepository;
         }
 
         public IActionResult Index()
@@ -22,11 +26,35 @@ namespace Global_Impact.Controllers
             return View();
         }
 
-        public IActionResult Cadastrar()
+        public IActionResult Cadastrar(string nome)
         {
-            //ViewBag.ongs = _context.ONGs.ToList();
-            ViewBag.itens = _context.Itens.ToList();
+            IList<DoacaoItem> lista = HttpContext.Session
+                .GetObjectFromJson<List<DoacaoItem>>("ListaDoacao");
+            if (lista == null) 
+            { 
+                lista = new List<DoacaoItem>();
+                HttpContext.Session.SetObjectAsJson("ListaDoacao", lista);
+            }
+            ViewBag.itens = _itemRepository.BuscarPor(i => 
+                i.Nome.ToLower().Contains(nome) || nome == null);
+            ViewBag.lista = lista;
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Adicionar(DoacaoItem doacaoItem)
+        {
+            IList<DoacaoItem> lista = HttpContext.Session
+                .GetObjectFromJson<List<DoacaoItem>>("ListaDoacao");
+            lista.Add(doacaoItem);
+            HttpContext.Session.SetObjectAsJson("ListaDoacao", lista);
+            return RedirectToAction("Cadastrar");
+        }
+
+        [HttpPost]
+        public IActionResult Remover(int id)
+        {
+            return RedirectToAction("Cadastrar");
         }
     }
 }
