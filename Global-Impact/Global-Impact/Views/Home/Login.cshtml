@@ -11,8 +11,8 @@
 </div>
 
 <div class="w-50 mx-auto mb-4 d-flex justify-content-around">
-    <a asp-action="cadastrar" class="btn-disabled btn" title="Em breve">Pessoa Física</a>
-    <a asp-action="cadastrar" class="btn-abled btn">Pessoa Jurídica</a>
+    <a asp-action="Login" asp-controller="home" class="btn-disabled btn" title="Em breve">Pessoa Física</a>
+    <a asp-action="login" asp-controller="home" class="btn-abled btn">Pessoa Jurídica</a>
 </div>
 
 <div class="d-flex col-6 justify-content-center align-self-center m-auto">
@@ -33,7 +33,7 @@
 
         <div class="d-flex flex-column justify-content-center text-center">
             <button class="btn-abled btn m-auto">Entrar</button>
-            <a asp-action="login" asp-controller="home" class="mt-2 link">
+            <a asp-action="cadastrar" asp-controller="estabelecimento" class="mt-2 link">
                 Ainda não tem cadastro? <br />Realize clicando aqui
             </a>
         </div>

@@ -67,9 +67,8 @@ body {
     text-align: center;
 }
 
-.about-ong {
-    background-color: var(--main-red);
-    font-size: 14px;
+.text {
+    font-size: 13px;
 }
 
 .btn-abled, .btn-disabled {
@@ -143,8 +142,8 @@ body {
         font-size: 1.8rem;
     }
 
-    .about-ong {
-        font-size: 18px;
+    .text {
+        font-size: 1.2rem;
     }
 
     .btn-login {

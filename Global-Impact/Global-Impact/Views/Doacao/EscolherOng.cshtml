@@ -1,40 +1,33 @@
 ﻿@model IList<Ong>
 
-
-
-
 @{
-    ViewData["title"] = "ONGs cadastradas";
+    ViewData["title"] = "Selecione uma ONG";
 }
 <meta charset="utf-8" />
-
-
 
 
 @section Links{
     <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
         <ul class="navbar-nav flex-grow-1 d-flex justify-content-end mr-5">
             <li class="nav-item">
-                <a class="nav-link text-dark another-page" style="font-size:22px" asp-controller="Home" asp-action="Index">Página Inicial</a>
+                <a class="nav-link text-dark another-page" style="font-size:22px" asp-controller="Home" asp-action="Index">Página inicial</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark another-page" style="font-size:22px" asp-controller="doacao" asp-action="cadastrar">Doar Alimento</a>
+                <a class="nav-link current-page" style="font-size:22px; color: var(--main-red); font-weight: bold" asp-controller="doacao" asp-action="cadastrar">Doar Alimento</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link current-page" style="font-size:22px; color: var(--main-red); font-weight: bold" asp-controller="Ong" asp-action="Index">ONGs</a>
+                <a class="nav-link text-dark another-page" style="font-size:22px" asp-controller="Ong" asp-action="Index">ONGs</a>
             </li>
         </ul>
     </div>
 }
 
 
-
-
 <div class="d-flex box-shadow flex-column h-100 col-12 ma-2 " style="border-radius: 30px; background-color: #F8F8F8">
 
     <div class="d-flex w-100">
         <div class="d-flex flex-column col-5">
-            <h4 class="title mt-5 ml-5" style="color: var(--light-red)">Veja as ONGs cadastradas</h4>
+            <h4 class="title mt-5 ml-5" style="color: var(--light-red)">Selecione a ONG que receberá a doação</h4>
         </div>
 
 
@@ -57,25 +50,32 @@
 
 
     <div class="d-flex justify-content-around align-items-center flex-wrap pre-scrollable">
+
         @foreach (var item in Model)
         {
-            <div class="d-flex box-shadow flex-column my-2" style="height: 30vh; width: 27vw; border-radius: 15px;">
+
+            <div class="d-flex box-shadow flex-column my-2" style="height: 30vh; width: 27vw; border-radius: 15px">
                 <div class="d-flex flex-row" style="height: 100%; width: 100%;">
                     <div style="width: 50%;">
                         <img src="@(item.Foto == null ? "https://raw.githubusercontent.com/Poagilers-Fenix/WebApp-Challenge/main/Imagens/no-image-found.png?token=AOXNWKVBRD3WDDJKASDBZT3BHUBDY" : @item.Foto)" 
                              style="width: 100%; height: 100%; border-radius: 15px 0 0 15px" />
                     </div>
                     <div style="width: 50%;" class="d-flex flex-column">
-                        <h5 class="d-flex justify-content-center mt-2 font-weight-bold text" style="word-wrap: break-word">@item.Nome</h5>
-                        <p style="word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical;
-                            overflow: hidden;" class="mx-3 about-ong">@item.Descricao</p>
-                            <p class="d-flex justify-content-center text">@item.Telefone</p>
-                            <a asp-action="PaginaOng" asp-controller="Ong" asp-route-id="@item.OngId" class="d-flex justify-content-center pa-2 text-white text" style="background-color: var(--main-red); border-radius: 0 15px 15px 0">Saiba mais sobre essa ong</a>
-
+                        <div class="d-flex justify-content-end">
+                            <form asp-action="adicionarDoacao" asp-controller="Ong">
+                                <button type="submit" class="btn btn-outline btn-sm font-weight-bold" asp-route-id="@item.OngId" style="color: var(--light-red)">Selecionar</button>
+                            </form>
                         </div>
+                        <h5 class="d-flex justify-content-center mt-2 text font-weight-bold" style="word-wrap: break-word">@item.Nome</h5>
+                        <p style="word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;" class="mx-3 text">@item.Descricao</p>
+                        <p class="d-flex justify-content-center text">@item.Telefone</p>
+                        <a asp-action="PaginaOng" asp-controller="Ong" asp-route-id="@item.OngId" class="d-flex justify-content-center pa-2 text-white text" style="background-color: var(--main-red); border-radius: 0 15px 15px 0">Saiba mais sobre essa ong</a>
+                    </div>
                 </div>
             </div>
+
         }
+
     </div>
 
 

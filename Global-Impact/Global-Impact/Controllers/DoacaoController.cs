@@ -15,10 +15,12 @@ namespace Global_Impact.Controllers
     {
 
         private IItemRepository _itemRepository;
+        private IOngRepository _ongRepository;
 
-        public DoacaoController(IItemRepository itemRepository)
+        public DoacaoController(IItemRepository itemRepository, IOngRepository ongRepository)
         {
             _itemRepository = itemRepository;
+            _ongRepository = ongRepository;
         }
 
         public IActionResult Index()
@@ -44,11 +46,21 @@ namespace Global_Impact.Controllers
         [HttpPost]
         public IActionResult Adicionar(DoacaoItem doacaoItem)
         {
+            IList<Item> itens = _itemRepository.BuscarPor(i => i.Nome == doacaoItem.Item.Nome);
+            foreach (var i in itens) { Item item = i; doacaoItem.Item = item; }
+
+
             IList<DoacaoItem> lista = HttpContext.Session
                 .GetObjectFromJson<List<DoacaoItem>>("ListaDoacao");
             lista.Add(doacaoItem);
             HttpContext.Session.SetObjectAsJson("ListaDoacao", lista);
             return RedirectToAction("Cadastrar");
+        }
+
+        [HttpGet]
+        public IActionResult EscolherOng()
+        {
+            return View(_ongRepository.Listar());
         }
 
         [HttpPost]
