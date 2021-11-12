@@ -23,7 +23,7 @@ namespace Global_Impact.Repositories
 
         public void Salvar()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
     }
 }

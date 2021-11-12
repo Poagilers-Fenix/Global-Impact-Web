@@ -63,7 +63,8 @@
                     <div style="width: 50%;" class="d-flex flex-column">
                         <div class="d-flex justify-content-end">
                             <form asp-action="adicionarDoacao" asp-controller="Ong">
-                                <button type="submit" class="btn btn-outline btn-sm font-weight-bold" asp-route-id="@item.OngId" style="color: var(--light-red)">Selecionar</button>
+                                <input type="hidden" name="id" value="@item.OngId" />
+                                <button type="submit" class="btn btn-outline btn-sm font-weight-bold" style="color: var(--light-red)">Selecionar</button>
                             </form>
                         </div>
                         <h5 class="d-flex justify-content-center mt-2 text font-weight-bold" style="word-wrap: break-word">@item.Nome</h5>

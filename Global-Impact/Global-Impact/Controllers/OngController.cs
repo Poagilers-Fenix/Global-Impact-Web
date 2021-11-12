@@ -57,6 +57,12 @@ namespace Global_Impact.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult EscolherOng()
+        {
+            return View(_ongRepository.Listar());
+        }
+
         [HttpPost]
         public IActionResult AdicionarDoacao(int id)
         {
@@ -70,16 +76,17 @@ namespace Global_Impact.Controllers
                     {
                         CodigoEstab = estab.EstabelecimentoId,
                         CodigoOng = id,
-                        //DataDoacao = DateTime.Today.Date
+                        DataDoacao = DateTime.Today.Date
                     };
                     di.Doacao = doacao;
                     _doacaoItemRepository.Cadastrar(di);
                     _doacaoItemRepository.Salvar();
                 }
                 TempData["Sucesso"] = "Doação realizada! Um entregador logo chegará para retirar os itens.";
+                return RedirectToAction("EscolherOng");
             }
             TempData["Erro"] = "Algo deu errado! Tente novamente mais tarde.";
-            return View();
+            return RedirectToAction("EscolherOng");
         }
 
         public IActionResult DeletarOng()
