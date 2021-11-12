@@ -18,7 +18,7 @@
                     <label asp-for="Telefone"></label>
                 </div>
                 <div class="d-flex flex-column">
-                    <input asp-for="Telefone" class="form-control mb-2">
+                    <input asp-for="Telefone" id="tel" class="form-control mb-2">
                     <span asp-validation-for="Telefone" class="text-danger mb-3" style="text-align: center"></span>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                     <label asp-for="Endereco.Cep"></label>
                 </div>
                 <div class="d-flex flex-column">
-                    <input asp-for="Endereco.Cep" class="form-control mb-2">
+                    <input asp-for="Endereco.Cep" id="cep" class="form-control mb-2">
                     <span asp-validation-for="Endereco.Cep" class="text-danger mb-3" style="text-align: center"></span>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                     <label asp-for="Endereco.UF"></label>
                 </div>
                 <div class="d-flex flex-column">
-                    <input asp-for="Endereco.UF" class="form-control mb-2">
+                    <input asp-for="Endereco.UF" id="uf" class="form-control mb-2">
                     <span asp-validation-for="Endereco.UF" class="text-danger mb-3" style="text-align: center"></span>
                 </div>
             </div>
@@ -110,3 +110,18 @@
                 </div>
             </div>
         </div>
+
+        <script type="text/javascript">
+
+            var TelMaskBehavior = function (val) {
+                return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+            },
+                TelOptions = {
+                    onKeyPress: function (val, e, field, options) {
+                        field.mask(TelMaskBehavior.apply({}, arguments), options);
+                    }
+                };
+            $('#tel').mask(TelMaskBehavior, TelOptions);
+            $("#cep").mask("00000-000");
+            $("#uf").mask("AA");
+        </script>
