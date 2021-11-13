@@ -29,7 +29,7 @@ namespace Global_Impact.Models
 
         [MinLength(2, ErrorMessage = "O UF precisa ter 2 caracteres.")]
         [MaxLength(2, ErrorMessage = "O UF precisa ter 2 caracteres.")]
-        [Display(Name = "UF (Unidade Federativa)"), Required(ErrorMessage = "Informe a UF.")]
+        [Required(ErrorMessage = "Informe a UF.")]
         public string UF { get; set; }
 
         [MinLength(5, ErrorMessage = "O nome do Logradouro deve ter, no mínimo, 5 caracteres.")]

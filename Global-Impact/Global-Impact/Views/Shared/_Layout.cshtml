@@ -28,9 +28,9 @@
                 <div class="m-0 p-0">
                     @if (HttpContextAccessor.HttpContext.Session.Get("EstabSessao") != null)
                     {
-                        <a class="navbar-brand" asp-controller="Home" asp-action="Logout">
+                        <button class="btn navbar-brand porta" data-toggle="modal" data-target="#modalSair">
                             <img src="~/img/portaFechada.png" id="porta" width="50" />
-                        </a>
+                        </button>
                     }
                     else
                     {
@@ -62,3 +62,21 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+
+<div class="modal fade" id="modalSair" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-controller="Home" asp-action="Logout" >
+                <div class="modal-header" style="background-color: #23272B; color: white">
+                    <h5 class="modal-title" id="modalLabel">O que deseja fazer?</h5>
+                </div>
+                <div class="modal-footer border-top-0" style="background-color: var(--header-bg); color: white">
+                    <a asp-action="cadastrar" asp-controller="estabelecimento" class="btn btn-dark">Editar/Apagar estabelecimento</a>
+                    <button type="submit" class="btn btn-modal text-white">Sair</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

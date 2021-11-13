@@ -42,15 +42,9 @@ namespace Global_Impact.Controllers
         }
 
         [HttpPost]
-        public IActionResult Adicionar(DoacaoItem doacaoItem)
+        public IActionResult Adicionar(DoacaoItem doacaoItem, int id)
         {
-            IList<Item> itens = _itemRepository.BuscarPor(i => i.Nome == doacaoItem.Item.Nome);
-            foreach (var i in itens) 
-            { 
-                Item item = i;
-                doacaoItem.ItemId = i.ItemId;
-                doacaoItem.Item = i;
-            }
+            doacaoItem.ItemId = id;
 
             IList<DoacaoItem> lista = HttpContext.Session
                 .GetObjectFromJson<List<DoacaoItem>>("ListaDoacao");
@@ -62,7 +56,6 @@ namespace Global_Impact.Controllers
         [HttpPost]
         public IActionResult Remover(int id)
         {
-            Console.WriteLine(id);
             IList<DoacaoItem> lista = HttpContext.Session
                 .GetObjectFromJson<List<DoacaoItem>>("ListaDoacao");
             foreach (var item in lista)

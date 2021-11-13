@@ -29,19 +29,32 @@ namespace Global_Impact.Controllers
             if (ModelState.IsValid)
             {
                 IList<Item> itemBanco = _itemRepository.BuscarPor(i => i.Nome == item.Nome);
-                foreach(var i in itemBanco)
+                if (itemBanco.Count > 0)
                 {
-                    if (i.Nome.ToLower() != item.Nome.ToLower())
+                    foreach (var i in itemBanco)
                     {
-                        _itemRepository.Cadastrar(item);
-                        _itemRepository.Salvar();
-                        TempData["Sucesso"] = $"Item '{item.Nome}' cadastrado!";
-                        return RedirectToAction("Cadastrar");
+                        if (i.Nome.ToLower() != item.Nome.ToLower())
+                        {
+                            _itemRepository.Cadastrar(item);
+                            _itemRepository.Salvar();
+                            TempData["Sucesso"] = $"Item '{item.Nome}' cadastrado!";
+                            return RedirectToAction("Cadastrar");
+                        }
+                        TempData["Erro"] = $"O item que você está tentando adicionar já existe!";
+                        return View();
                     }
-                    TempData["Erro"] = $"O item que você está tentando adicionar já existe!";
-                    return View();
+                } else
+                {
+                    _itemRepository.Cadastrar(item);
+                    _itemRepository.Salvar();
+                    TempData["Sucesso"] = $"Item '{item.Nome}' cadastrado!";
+                    return RedirectToAction("Cadastrar");
                 }
+            } else
+            {
+                return View();
             }
+            TempData["Erro"] = "Houve um erro ao tentar adicionar o item... Tente novamente mais tarde!";
             return View();
         }
     }

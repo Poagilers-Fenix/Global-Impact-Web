@@ -54,7 +54,7 @@
                         <div style="width: 100%;">
                             <div class="d-flex justify-content-between">
                                 <p class="paragraph m-3 col-8">@item.Nome</p>
-                                <input asp-for="Item.Nome" value="@item.Nome" type="hidden" />
+                                <input asp-for="ItemId" value="@item.ItemId" name="id" type="hidden" />
                                 <button class="btn">
                                     <span class="material-icons" style="color: var(--light-red)">add_circle_outline</span>
                                 </button>
@@ -102,13 +102,19 @@
                     @foreach (var item in ViewBag.lista)
                     {
                         <li class="d-flex justify-content-between align-content-center col-11 m-auto">
-                            <p class="text-list col-4">@item.Item.Nome</p>
+                            @foreach (var i in ViewBag.itens)
+                            {
+                                @if (i.ItemId == item.ItemId)
+                                {
+                                    <p class="text-list col-4">@i.Nome</p>
+                                }
+                            }
 
                             <p class="text-list col-4">@item.Quantidade @item.UnidadeMedida.ToString()</p>
 
-                            @*<a asp-action="remover" asp-route-id="@item.DoacaoItemId">*@
                             <form asp-action="remover">
-                                <input type="hidden" name="id" value="@item.Item.ItemId" />
+                                <input type="hidden" name="id" value="@item.ItemId" />
+
                                 <button class="btn p-0">
                                     <span class="material-icons col-4" style="color: var(--light-red)">delete</span>
                                 </button>
