@@ -15,7 +15,7 @@ namespace Global_Impact.Models
         [Display(Name = "Nome do item")]
         [Required(ErrorMessage = "Informe o nome do item")]
         [MinLength(3, ErrorMessage = "O nome deve ter, no mínimo, 3 caracteres.")]
-        [MaxLength(40, ErrorMessage = "O nome deve ter, no máximo, 40 caracteres.")]
+        [MaxLength(30, ErrorMessage = "O nome deve ter, no máximo, 30 caracteres.")]
         public string Nome { get; set; }
         [Display(Name = "Foto")]
         [MaxLength(1000)]

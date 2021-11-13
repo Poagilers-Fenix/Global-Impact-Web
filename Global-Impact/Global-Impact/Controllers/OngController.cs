@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 using Global_Impact.Repositories;
 using Global_Impact.SessionHelpers;
+using System.Text;
 
 namespace Global_Impact.Controllers
 {
@@ -90,9 +91,23 @@ namespace Global_Impact.Controllers
             return RedirectToAction("EscolherOng");
         }
 
-        public IActionResult DeletarOng()
+        public IActionResult DeletarOng(string senha, int ongId)
         {
-            return View();
+            IList<Ong> Ongs = _ongRepository.Listar();
+            foreach (var ong in Ongs)
+            {
+                if (ong.Senha == senha)
+                {
+                    _ongRepository.Remover(ong.OngId);
+                    _ongRepository.Salvar();
+                    TempData["Sucesso"] = "Ong deletada com sucesso!";
+                    return RedirectToAction("Index");
+                }
+            }
+            Ong ongRecebida = _ongRepository.BuscarPorId(ongId);
+            TempData["Erro"] = "Erro ao deletar a ong, veja se o código que você inseriu está correto.";
+            return View("PaginaOng", ongRecebida.OngId);
         }
+
     }
 }

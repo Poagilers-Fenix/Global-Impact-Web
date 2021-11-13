@@ -44,6 +44,7 @@ namespace Global_Impact.Models
         [Required(ErrorMessage = "Informe a senha.")]
         [MinLength(6, ErrorMessage = "A senha deve ter, no mínimo, 6 caracteres.")]
         [MaxLength(25)]
+        [DataType(DataType.Password)]
         public string Senha { get; set; }
 
         // um-para muitos doacao

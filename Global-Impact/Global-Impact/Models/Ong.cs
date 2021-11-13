@@ -37,5 +37,19 @@ namespace Global_Impact.Models
         [MaxLength(1000)]
         public string Foto { get; set; }
 
+
+        [Display(Name = "Senha")]
+        [Required(ErrorMessage = "Informe a senha.")]
+        [MinLength(6, ErrorMessage = "A senha da ONG deve ter, no mínimo, 6 caracteres.")]
+        [MaxLength(25)]
+        [DataType(DataType.Password)]
+        public string Senha { get; set; }
+
+        [Display(Name = "E-mail")]
+        [Required(ErrorMessage = "Informe o E-mail.")]
+        [DataType(DataType.EmailAddress)]
+        [MaxLength(30)]
+        public string Email { get; set; }
+
     }
 }
