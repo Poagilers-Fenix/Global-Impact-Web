@@ -115,6 +115,17 @@ body {
         text-decoration-color: var(--main-red);
     }
 
+/*Modal paginaOng*/
+
+.btn-modal {
+    background-color: var(--main-red);
+}
+    .btn-modal:hover {
+        background-color: var(--dark-red);
+    }
+
+/* */
+
 @media screen and (max-width: 1200px) {
     .text-ong {
         font-size: 16px;

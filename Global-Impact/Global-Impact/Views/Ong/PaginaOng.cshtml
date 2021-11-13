@@ -1,4 +1,4 @@
-﻿@model Ong 
+﻿@model Ong
 
 @{
     ViewData["title"] = "Detalhes da ong";
@@ -29,7 +29,7 @@
     <div class="d-flex flex-row w-100">
         <div>
             <img src="@(Model.Foto == null ? "https://raw.githubusercontent.com/Poagilers-Fenix/WebApp-Challenge/main/Imagens/no-image-found.png?token=AOXNWKVBRD3WDDJKASDBZT3BHUBDY" : @Model.Foto)"
-                  style="object-fit:  fill; height: 350px; width: 350px; border-radius: 30px;"/>
+                 style="object-fit:  fill; height: 350px; width: 350px; border-radius: 30px;" />
         </div>
         <div class="d-flex justify-content-center align-items-center ml-3 pb-0">
             <p class="h4">@Model.Descricao</p>
@@ -43,13 +43,37 @@
             <p class="h4">Endereço: @Model.Endereco.Cidade - @Model.Endereco.Logradouro, @Model.Endereco.Bairro, @Model.Endereco.Numero </p>
             <p class="h4">Complemento: @Model.Endereco.Complemento</p>
             <p class="h4">CEP: @Model.Endereco.Cep</p>
-            <p class="h4">Email: Email mock</p>
-            <p class="h4">Horário de funcionamento: mock</p>
+            <p class="h4">Email: @Model.Email</p>
             <p class="h4 mb-0">Telefone: @Model.Telefone</p>
         </div>
         <div class="d-flex flex-column justify-content-around ml-5">
-            <a asp-action="DeletarOng" asp-controller="Ong" class="btn btn-block text-white" style="background-color: var(--light-red);">Você é responsável por essa ong e quer tirá-la do sistema? clique aqui</a>
+            <div class="mx-auto row justify-content-center">
+                <button type="button" class="mb-3 btn btn-danger" data-toggle="modal" data-target="#modalConfirma">
+                    Você é responsável por essa ong e quer tirá-la do sistema? clique aqui
+                </button>
+            </div>
             <a asp-action="Cadastrar" asp-controller="Doacao" class="btn btn-block text-white" style="background-color: var(--light-red); ">Faça uma doação para essa ong</a>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalConfirma" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-action="DeletarOng" asp-controller="Ong">
+                <div class="modal-header" style="background-color: #23272B; color: white">
+                    <h5 class="modal-title" id="modalLabel">Confirmação</h5>
+                </div>
+                <div class="modal-body" style="background-color: var(--header-bg)">
+                    <p>Não será possível reverter esta ação, os dados da ONG serão apagados. Tem certeza que deseja apagar <b>definitivamente</b> a ONG? </p>
+                    <input name="senha" value="" type="text" placeholder="Insira a senha de sua ong" class="container-fluid form-control" />
+                    <input type="hidden" name="ongId" value="@Model.OngId" />
+                </div>
+                <div class="modal-footer border-top-0" style="background-color: var(--header-bg); color: white">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Não</button>
+                    <button type="submit" class="btn btn-modal text-white">Sim, apagar ONG</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

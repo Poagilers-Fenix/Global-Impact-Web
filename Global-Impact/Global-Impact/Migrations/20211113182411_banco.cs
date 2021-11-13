@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Global_Impact.Migrations
 {
-    public partial class BD : Migration
+    public partial class banco : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,13 +13,13 @@ namespace Global_Impact.Migrations
                 {
                     EnderecoId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Cep = table.Column<string>(nullable: false),
-                    Bairro = table.Column<string>(nullable: false),
-                    Cidade = table.Column<string>(nullable: false),
-                    UF = table.Column<string>(nullable: false),
+                    Cep = table.Column<string>(maxLength: 9, nullable: false),
+                    Bairro = table.Column<string>(maxLength: 30, nullable: false),
+                    Cidade = table.Column<string>(maxLength: 30, nullable: false),
+                    UF = table.Column<string>(maxLength: 2, nullable: false),
                     Logradouro = table.Column<string>(maxLength: 40, nullable: false),
-                    Numero = table.Column<string>(nullable: false),
-                    Complemento = table.Column<string>(nullable: true)
+                    Numero = table.Column<string>(maxLength: 5, nullable: false),
+                    Complemento = table.Column<string>(maxLength: 30, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -32,8 +32,8 @@ namespace Global_Impact.Migrations
                 {
                     ItemId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(maxLength: 50, nullable: false),
-                    Foto = table.Column<string>(nullable: true)
+                    Nome = table.Column<string>(maxLength: 30, nullable: false),
+                    Foto = table.Column<string>(maxLength: 1000, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -46,12 +46,12 @@ namespace Global_Impact.Migrations
                 {
                     EstabelecimentoId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(nullable: false),
-                    Cnpj = table.Column<string>(nullable: false),
-                    EnderecoId = table.Column<int>(nullable: false),
-                    Telefone = table.Column<string>(nullable: false),
-                    Email = table.Column<string>(nullable: false),
-                    Senha = table.Column<string>(nullable: false)
+                    Nome = table.Column<string>(maxLength: 40, nullable: false),
+                    Cnpj = table.Column<string>(maxLength: 18, nullable: false),
+                    EnderecoId = table.Column<int>(nullable: true),
+                    Telefone = table.Column<string>(maxLength: 15, nullable: false),
+                    Email = table.Column<string>(maxLength: 30, nullable: false),
+                    Senha = table.Column<string>(maxLength: 25, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -61,7 +61,7 @@ namespace Global_Impact.Migrations
                         column: x => x.EnderecoId,
                         principalTable: "Tb_Endereco",
                         principalColumn: "EnderecoId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -70,11 +70,13 @@ namespace Global_Impact.Migrations
                 {
                     OngId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(nullable: false),
-                    Descricao = table.Column<string>(nullable: false),
-                    EnderecoId = table.Column<int>(nullable: false),
-                    Telefone = table.Column<string>(nullable: false),
-                    Foto = table.Column<string>(nullable: true)
+                    Nome = table.Column<string>(maxLength: 40, nullable: false),
+                    Descricao = table.Column<string>(maxLength: 125, nullable: false),
+                    EnderecoId = table.Column<int>(nullable: true),
+                    Telefone = table.Column<string>(maxLength: 15, nullable: false),
+                    Foto = table.Column<string>(maxLength: 1000, nullable: true),
+                    Senha = table.Column<string>(maxLength: 25, nullable: false),
+                    Email = table.Column<string>(maxLength: 30, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -84,7 +86,7 @@ namespace Global_Impact.Migrations
                         column: x => x.EnderecoId,
                         principalTable: "Tb_Endereco",
                         principalColumn: "EnderecoId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -110,7 +112,7 @@ namespace Global_Impact.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tb_DoacaoAlimento",
+                name: "Tb_DoacaoItem",
                 columns: table => new
                 {
                     DoacaoId = table.Column<int>(nullable: false),
@@ -118,19 +120,19 @@ namespace Global_Impact.Migrations
                     DataValidade = table.Column<DateTime>(nullable: false),
                     Quantidade = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
                     UnidadeMedida = table.Column<int>(nullable: false),
-                    Foto = table.Column<string>(nullable: true)
+                    Foto = table.Column<string>(maxLength: 1000, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tb_DoacaoAlimento", x => new { x.DoacaoId, x.ItemId });
+                    table.PrimaryKey("PK_Tb_DoacaoItem", x => new { x.DoacaoId, x.ItemId });
                     table.ForeignKey(
-                        name: "FK_Tb_DoacaoAlimento_Tb_Doacao_DoacaoId",
+                        name: "FK_Tb_DoacaoItem_Tb_Doacao_DoacaoId",
                         column: x => x.DoacaoId,
                         principalTable: "Tb_Doacao",
                         principalColumn: "DoacaoId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Tb_DoacaoAlimento_Tb_Item_ItemId",
+                        name: "FK_Tb_DoacaoItem_Tb_Item_ItemId",
                         column: x => x.ItemId,
                         principalTable: "Tb_Item",
                         principalColumn: "ItemId",
@@ -143,8 +145,8 @@ namespace Global_Impact.Migrations
                 column: "EstabelecimentoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tb_DoacaoAlimento_ItemId",
-                table: "Tb_DoacaoAlimento",
+                name: "IX_Tb_DoacaoItem_ItemId",
+                table: "Tb_DoacaoItem",
                 column: "ItemId");
 
             migrationBuilder.CreateIndex(
@@ -161,7 +163,7 @@ namespace Global_Impact.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Tb_DoacaoAlimento");
+                name: "Tb_DoacaoItem");
 
             migrationBuilder.DropTable(
                 name: "Tb_Ong");

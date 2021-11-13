@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Global_Impact.Models
 {
-    [Table("Tb_DoacaoAlimento")]
+    [Table("Tb_DoacaoItem")]
     public class DoacaoItem
     {
         public int DoacaoId { get; set; }
