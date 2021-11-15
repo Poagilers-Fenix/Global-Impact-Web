@@ -22,7 +22,16 @@
     </div>
 }
 
-<div class="pre-scrollable d-flex box-shadow flex-column align-items-center w-100 mh-100 col-12 pb-5" style="background-color: #F8F8F8; padding-left: 5%; padding-right: 5%;">
+@if (TempData["Sucesso"] != null)
+{
+    <Feedback Texto="@TempData["Sucesso"]" is-error="false"></Feedback>
+}
+else
+{
+    <Feedback Texto="@TempData["Erro"]" is-error="true"></Feedback>
+}
+
+<div class="pre-scrollable d-flex box-shadow flex-column align-items-center w-100 col-12 pb-5" style="background-color: #F8F8F8; padding-left: 5%; padding-right: 5%; min-height: @(TempData["Sucesso"] != null || TempData["Sucesso"] != null ? "90%" : "100%")">
     <div class="w-100">
         <p class="d-flex justify-content-center font-weight-bold mb-0 pt-4 pb-5 h1" style="color: var(--light-red)">@Model.Nome</p>
     </div>
@@ -66,7 +75,7 @@
                 </div>
                 <div class="modal-body" style="background-color: var(--header-bg)">
                     <p>Não será possível reverter esta ação, os dados da ONG serão apagados. Tem certeza que deseja apagar <b>definitivamente</b> a ONG? </p>
-                    <input name="senha" value="" type="text" placeholder="Insira a senha de sua ong" class="container-fluid form-control" />
+                    <input name="senha" value="" type="password" placeholder="Insira a senha de sua ong" class="container-fluid form-control" />
                     <input type="hidden" name="ongId" value="@Model.OngId" />
                 </div>
                 <div class="modal-footer border-top-0" style="background-color: var(--header-bg); color: white">

@@ -35,8 +35,8 @@ namespace Global_Impact.Controllers
 
         public IActionResult PaginaOng(int id)
         {
-            Ong ong = _ongRepository.BuscarPorId(id);
-            return View(ong);
+                Ong ong = _ongRepository.BuscarPorId(id);
+                return View(ong);
         }
 
         public IActionResult Cadastrar()
@@ -96,7 +96,7 @@ namespace Global_Impact.Controllers
             IList<Ong> Ongs = _ongRepository.Listar();
             foreach (var ong in Ongs)
             {
-                if (ong.Senha == senha)
+                if (ong.Senha == senha && ong.OngId == ongId)
                 {
                     _ongRepository.Remover(ong.OngId);
                     _ongRepository.Salvar();
@@ -104,9 +104,8 @@ namespace Global_Impact.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            Ong ongRecebida = _ongRepository.BuscarPorId(ongId);
             TempData["Erro"] = "Erro ao deletar a ong, veja se o código que você inseriu está correto.";
-            return View("PaginaOng", ongRecebida.OngId);
+            return RedirectToAction("PaginaOng", new { id = ongId});
         }
 
     }
