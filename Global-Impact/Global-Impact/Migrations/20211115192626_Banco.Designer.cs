@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Global_Impact.Migrations
 {
     [DbContext(typeof(WefeedContext))]
-    [Migration("20211113182411_banco")]
-    partial class banco
+    [Migration("20211115192626_Banco")]
+    partial class Banco
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

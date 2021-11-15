@@ -48,7 +48,7 @@
             <label asp-for="Senha">Senha</label>
         </div>
         <div class="d-flex flex-column">
-            <input asp-for="Senha" type="password" class="form-control" />
+            <input type="password" name="senha" asp-for="Senha" class="form-control" />
             <span asp-validation-for="Senha" class="text-danger mb-3" style="text-align: center"></span>
         </div>
     </div>
@@ -58,7 +58,7 @@
             <label>Confirme a senha</label>
         </div>
         <div class="d-flex flex-column">
-            <input name="senha" type="password" class="form-control" />
+            <input name="confirmaSenha" type="password" class="form-control" />
             <span asp-validation-for="Senha" class="text-danger mb-3" style="text-align: center"></span>
         </div>
     </div>

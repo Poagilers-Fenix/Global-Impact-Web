@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Global_Impact.Migrations
 {
-    public partial class banco : Migration
+    public partial class Banco : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

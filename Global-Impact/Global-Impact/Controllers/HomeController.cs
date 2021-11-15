@@ -44,7 +44,7 @@ namespace Global_Impact.Controllers
             {
                 if (estabEncontrado.Senha == estab.Senha)
                 {
-                    HttpContext.Session.SetObjectAsJson("EstabSessao", estab);
+                    HttpContext.Session.SetObjectAsJson("EstabSessao", estabEncontrado);
                     return RedirectToAction("index");
                 }
             }
