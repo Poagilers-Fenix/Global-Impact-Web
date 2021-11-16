@@ -55,7 +55,7 @@ namespace Global_Impact.Controllers
             _ongRepository.Cadastrar(ong);
             _ongRepository.Salvar();
             TempData["Sucesso"] = "Ong cadastrada com sucesso!";
-            return View();
+            return RedirectToAction("Cadastrar");
         }
 
         [HttpGet]
