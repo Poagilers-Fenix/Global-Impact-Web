@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Global_Impact.Migrations
 {
     [DbContext(typeof(WefeedContext))]
-    [Migration("20211115192626_Banco")]
+    [Migration("20211116143935_Banco")]
     partial class Banco
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -193,8 +193,8 @@ namespace Global_Impact.Migrations
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasColumnType("nvarchar(125)")
-                        .HasMaxLength(125);
+                        .HasColumnType("nvarchar(300)")
+                        .HasMaxLength(300);
 
                     b.Property<string>("Email")
                         .IsRequired()

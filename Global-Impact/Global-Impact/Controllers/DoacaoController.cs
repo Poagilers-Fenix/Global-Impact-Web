@@ -36,7 +36,7 @@ namespace Global_Impact.Controllers
                 HttpContext.Session.SetObjectAsJson("ListaDoacao", lista);
             }
             ViewBag.itens = _itemRepository.BuscarPor(i => 
-                i.Nome.ToLower().Contains(nome) || nome == null);
+                i.Nome.Contains(nome) || nome == null);
             ViewBag.lista = lista;
             return View();
         }
