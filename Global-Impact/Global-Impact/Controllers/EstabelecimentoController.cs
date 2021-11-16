@@ -90,21 +90,29 @@ namespace Global_Impact.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditarSenha(string senha)
+        public IActionResult EditarSenha(Estabelecimento estab)
         {
+
             string novaSenha = Request.Form["novaSenha"];
             string confirma = Request.Form["confirma"];
-            Estabelecimento estab = HttpContext.Session.GetObjectFromJson<Estabelecimento>("EstabSessao");
+            Estabelecimento estabSessao = HttpContext.Session.GetObjectFromJson<Estabelecimento>("EstabSessao");
 
-            if (estab.Senha == senha)
+            if (estabSessao.Senha == estab.Senha)
             {
-                if(novaSenha == confirma)
+                if(novaSenha.Length > 6 && confirma.Length > 6)
                 {
-                    estab.Senha = novaSenha;
-                    HttpContext.Session.SetObjectAsJson("EstabSessao", estab);
-                    TempData["Sucesso"] = "Senha alterada com sucesso!";
-                } else { TempData["Erro"] = "As senhas informadas no campo de 'Nova Senha' e de confirmação são diferentes!"; }
-            } else { TempData["Erro"] = "A senha informada não é a senha atual."; }
+                    if (novaSenha == confirma)
+                    {
+                        estab.Senha = novaSenha;
+                        HttpContext.Session.SetObjectAsJson("EstabSessao", estab);
+                        TempData["Sucesso"] = "Senha alterada com sucesso!";
+                    }
+                    else { TempData["Erro"] = "As senhas informadas no campo de 'Nova Senha' e de confirmação são diferentes!"; }
+                }
+                else { TempData["Erro"] = "Os campos de nova senha e de confirmação de nova senha precisam ter, no mínimo, 6 caracteres."; }
+            }
+            else { TempData["Erro"] = "A senha informada não é a senha atual."; }
+            
             return View();
         }
 
