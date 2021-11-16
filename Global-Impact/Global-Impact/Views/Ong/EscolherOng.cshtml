@@ -50,14 +50,17 @@
 
 
     <div class="d-flex justify-content-around align-items-center flex-wrap pre-scrollable">
-
+        @if (Model.Count == 0)
+        {
+            <p style="margin: 5%;">Ainda não há nenhuma ong cadastrada no nosso sistema. Fique à vontade para adicionar a primeira!</p>
+        }
         @foreach (var item in Model)
         {
 
             <div class="d-flex box-shadow flex-column my-2" style="height: 30vh; width: 27vw; border-radius: 15px">
                 <div class="d-flex flex-row" style="height: 100%; width: 100%; text-align: center">
                     <div style="width: 50%;">
-                        <img src="@(item.Foto == null ? "https://raw.githubusercontent.com/Poagilers-Fenix/WebApp-Challenge/main/Imagens/no-image-found.png?token=AOXNWKVBRD3WDDJKASDBZT3BHUBDY" : @item.Foto)" 
+                        <img src="@(item.Foto == null ? "https://raw.githubusercontent.com/Poagilers-Fenix/WebApp-Challenge/main/Imagens/no-image-found.png?token=AOXNWKVBRD3WDDJKASDBZT3BHUBDY" : @item.Foto)"
                              style="width: 100%; height: 100%; border-radius: 15px 0 0 15px" />
                     </div>
                     <div style="width: 50%;" class="d-flex flex-column">

@@ -60,7 +60,7 @@ namespace Global_Impact.Controllers
                 .GetObjectFromJson<List<DoacaoItem>>("ListaDoacao");
             foreach (var item in lista)
             {
-                if (item.Item.ItemId == id)
+                if (item.ItemId == id)
                 {
                     lista.Remove(item);
                     HttpContext.Session.SetObjectAsJson("ListaDoacao", lista);
