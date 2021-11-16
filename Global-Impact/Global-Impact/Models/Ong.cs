@@ -20,8 +20,8 @@ namespace Global_Impact.Models
 
         [Display(Name = "Descrição da ong")]
         [Required(ErrorMessage = "Informe a descrição da ONG.")]
-        [MinLength(25, ErrorMessage = "A descrição da ONG deve ter, no mínimo, 25 caracteres.")]
-        [MaxLength(125, ErrorMessage = "A descrição da ONG deve ter, no máximo, 125 caracteres.")]
+        [MinLength(30, ErrorMessage = "A descrição da ONG deve ter, no mínimo, 25 caracteres.")]
+        [MaxLength(300, ErrorMessage = "A descrição da ONG deve ter, no máximo, 125 caracteres.")]
         public string Descricao { get; set; }
 
         // um-para-um endereco
