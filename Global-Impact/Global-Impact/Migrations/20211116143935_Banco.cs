@@ -71,7 +71,7 @@ namespace Global_Impact.Migrations
                     OngId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(maxLength: 40, nullable: false),
-                    Descricao = table.Column<string>(maxLength: 125, nullable: false),
+                    Descricao = table.Column<string>(maxLength: 300, nullable: false),
                     EnderecoId = table.Column<int>(nullable: true),
                     Telefone = table.Column<string>(maxLength: 15, nullable: false),
                     Foto = table.Column<string>(maxLength: 1000, nullable: true),

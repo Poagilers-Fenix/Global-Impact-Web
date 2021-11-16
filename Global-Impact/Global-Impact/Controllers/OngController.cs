@@ -27,9 +27,10 @@ namespace Global_Impact.Controllers
             _doacaoItemRepository = doacaoItemRepository;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string cidade)
         {
-            IList<Ong> listaOng = _ongRepository.Listar();
+            IList<Ong> listaOng = _ongRepository.BuscarPor(o =>
+                o.Endereco.Cidade.Contains(cidade) || cidade == null);
             return View(listaOng);
         }
 

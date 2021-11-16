@@ -1,8 +1,5 @@
 ﻿@model IList<Ong>
 
-
-
-
 @{
     ViewData["title"] = "ONGs cadastradas";
 }
@@ -28,15 +25,9 @@
 }
 
 
+<Feedback Texto="@TempData["Sucesso"]" is-error="false"></Feedback>
 
-@if (TempData["Sucesso"] != null)
-{
-    <Feedback Texto="@TempData["Sucesso"]" is-error="false"></Feedback>
-}
-else
-{
-    <Feedback Texto="@TempData["Erro"]" is-error="true"></Feedback>
-}
+<Feedback Texto="@TempData["Erro"]" is-error="true"></Feedback>
 
 <div class="d-flex box-shadow flex-column col-12 ma-2 mb-2 " style="border-radius: 30px; background-color: #F8F8F8; min-height: @(TempData["Sucesso"] != null || TempData["Sucesso"] != null ? "90%" : "100%")">
 
