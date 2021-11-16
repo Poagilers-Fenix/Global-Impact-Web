@@ -22,15 +22,16 @@
     </div>
 }
 
-<Feedback Texto="@TempData["Sucesso"]" is-error="false"></Feedback>
 
-<Feedback Texto="@TempData["Erro"]" is-error="true"></Feedback>
-
-
-<div class="pre-scrollable d-flex box-shadow flex-column align-items-center w-100 col-12 pb-5 b-radius" style="background-color: #F8F8F8; padding-left: 5%; padding-right: 5%; min-height: @(TempData["Sucesso"] != null || TempData["Sucesso"] != null ? "90%" : "100%")">
+<div class="pre-scrollable d-flex box-shadow flex-column align-items-center w-100 col-12 pb-5 b-radius" 
+     style="background-color: #F8F8F8; padding-left: 5%; padding-right: 5%; max-height: @(TempData["Sucesso"] != null || TempData["Erro"] != null ? "90%" : "100%")">
     <div class="w-100">
         <h4 class="d-flex justify-content-center font-weight-bold mb-0 mt-3 pt-4 pb-5" style="color: var(--light-red)">@Model.Nome</h4>
+
     </div>
+    <Feedback Texto="@TempData["Sucesso"]" is-error="false"></Feedback>
+
+    <Feedback Texto="@TempData["Erro"]" is-error="true"></Feedback>
     <div class="d-flex flex-row w-100">
         <div>
             <img src="@(Model.Foto == null ? "https://raw.githubusercontent.com/Poagilers-Fenix/WebApp-Challenge/main/Imagens/no-image-found.png?token=AOXNWKVBRD3WDDJKASDBZT3BHUBDY" : @Model.Foto)"
@@ -54,9 +55,10 @@
         <div class="d-flex flex-column justify-content-around ml-5">
             <div class="mx-auto row justify-content-center">
                 <button type="button" class="mb-3 btn btn-danger" data-toggle="modal" data-target="#modalConfirma">
-                    Você é responsável por essa ong e quer tirá-la do sistema? clique aqui
+                    Você é responsável por essa ong e quer tirá-la do sistema? <br />Clique aqui
                 </button>
             </div>
+            <a asp-action="Editar" asp-controller="Ong" asp-route-id="@Model.OngId" class="btn btn-danger">Editar informações</a>
             <a asp-action="Cadastrar" asp-controller="Doacao" class="btn btn-block text-white" style="background-color: var(--light-red); ">Faça uma doação para essa ong</a>
         </div>
     </div>

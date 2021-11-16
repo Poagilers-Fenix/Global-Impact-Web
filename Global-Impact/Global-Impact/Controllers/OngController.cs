@@ -36,8 +36,8 @@ namespace Global_Impact.Controllers
 
         public IActionResult PaginaOng(int id)
         {
-                Ong ong = _ongRepository.BuscarPorId(id);
-                return View(ong);
+            Ong ong = _ongRepository.BuscarPorId(id);
+            return View(ong);
         }
 
         public IActionResult Cadastrar()
@@ -92,6 +92,31 @@ namespace Global_Impact.Controllers
             return RedirectToAction("EscolherOng");
         }
 
+        [HttpGet]
+        public IActionResult Editar(int id)
+        {
+            Ong ong = _ongRepository.BuscarPorId(id);
+            return View(ong);
+        }
+
+        [HttpPost]
+        public IActionResult Editar(Ong ong)
+        {
+            if (ModelState.IsValid)
+            {
+                Ong ongBanco = _ongRepository.BuscarPorId(ong.OngId);
+                string senha = ongBanco.Senha;
+                if (ong.Senha == senha)
+                {
+                    _ongRepository.Editar(ong);
+                    _ongRepository.Salvar();
+                    TempData["Sucesso"] = "Dados da ONG alterados com sucesso!";
+                    return RedirectToAction("editar");
+                }
+            }
+            return View();
+        }
+
         public IActionResult DeletarOng(string senha, int ongId)
         {
             IList<Ong> Ongs = _ongRepository.Listar();
@@ -105,8 +130,8 @@ namespace Global_Impact.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            TempData["Erro"] = "Erro ao deletar a ong, veja se o código que você inseriu está correto.";
-            return RedirectToAction("PaginaOng", new { id = ongId});
+            TempData["Erro"] = "Erro ao deletar a ong, veja se a senha que você inseriu está correta.";
+            return RedirectToAction("PaginaOng", new { id = ongId });
         }
 
     }

@@ -19,6 +19,8 @@ namespace Global_Impact.Repositories
 
         void Remover(int id);
 
+        IList<Estabelecimento> Listar();
+
         void Salvar();
         
     }

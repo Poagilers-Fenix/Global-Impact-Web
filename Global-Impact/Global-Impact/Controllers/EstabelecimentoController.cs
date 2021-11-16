@@ -37,20 +37,39 @@ namespace Global_Impact.Controllers
         {
             if (ModelState.IsValid)
             {
-                string senha = Request.Form["senha"];
-                string confirmaSenha = Request.Form["confirmaSenha"];
-
-                if (senha == confirmaSenha)
+                IList<Estabelecimento> lista = _estabRepository.Listar();
+                if (lista.Count > 0)
                 {
-                    _estabRepository.Cadastrar(estab);
-                    _estabRepository.Salvar();
-                    HttpContext.Session.SetObjectAsJson("EstabSessao", estab);
-                    TempData["msg"] = "Estabelecimento cadastrado com sucesso!";
-                    return RedirectToAction("Index", "home");
+                    foreach (var e in lista)
+                    {
+                        if (e.Cnpj == estab.Cnpj) {
+                            TempData["Erro"] = "Um estabelecimento com este CNPJ já foi cadastrado.";
+                            return View(); }
+                        else if (e.Nome == estab.Nome) {
+                            TempData["Erro"] = "Um estabelecimento com este nome já foi cadastrado.";
+                            return View(); }
+                        else if (e.Email == estab.Email) {
+                            TempData["Erro"] = "Um estabelecimento com este e-mail já foi cadastrado.";
+                            return View(); }
+
+                        string senha = Request.Form["senha"];
+                        string confirmaSenha = Request.Form["confirmaSenha"];
+
+                        if (senha == confirmaSenha) { Cadastro(estab); return RedirectToAction("Index", "Home"); }
+                        TempData["Erro"] = "As senhas são diferentes!";
+                    }
                 }
-                TempData["Erro"] = "As senhas são diferentes!";
+                else { Cadastro(estab); return RedirectToAction("Index", "Home"); }
             }
             return View();
+        }
+
+        public void Cadastro(Estabelecimento estab)
+        {
+            _estabRepository.Cadastrar(estab);
+            _estabRepository.Salvar();
+            HttpContext.Session.SetObjectAsJson("EstabSessao", estab);
+            TempData["msg"] = "Estabelecimento cadastrado com sucesso!";
         }
 
         [HttpGet]
@@ -76,8 +95,10 @@ namespace Global_Impact.Controllers
                         _estabRepository.Salvar();
                         HttpContext.Session.SetObjectAsJson("EstabSessao", estab);
                         TempData["Sucesso"] = "Dados Atualizados com sucesso!";
-                    } else { TempData["Erro"] = "As senhas informadas são diferentes!"; }
-                } else { TempData["Erro"] = "A senha informada não é a senha atual."; }
+                    }
+                    else { TempData["Erro"] = "As senhas informadas são diferentes!"; }
+                }
+                else { TempData["Erro"] = "A senha informada não é a senha atual."; }
 
             }
             return View();
@@ -99,7 +120,7 @@ namespace Global_Impact.Controllers
 
             if (estabSessao.Senha == estab.Senha)
             {
-                if(novaSenha.Length > 6 && confirma.Length > 6)
+                if (novaSenha.Length > 6 && confirma.Length > 6)
                 {
                     if (novaSenha == confirma)
                     {
@@ -112,7 +133,7 @@ namespace Global_Impact.Controllers
                 else { TempData["Erro"] = "Os campos de nova senha e de confirmação de nova senha precisam ter, no mínimo, 6 caracteres."; }
             }
             else { TempData["Erro"] = "A senha informada não é a senha atual."; }
-            
+
             return View();
         }
 

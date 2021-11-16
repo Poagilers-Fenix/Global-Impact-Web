@@ -30,7 +30,7 @@
             <h3 class="title mt-5 ml-5" style="height: 10%">@ViewData["title"]</h3>
 
             <div class="d-flex justify-content-between align-items-center col-lg-11 ml-4">
-                <a asp-action="cadastrar" asp-controller="item" class="btn btn-outline">Adicionar item</a>
+                <a asp-action="cadastrar" asp-controller="item" class="btn btn-outline" title="Não encontrou o item desejado? Adicione um novo clicando aqui!">Novo item</a>
                 <form class="d-flex col-6" asp-action="cadastrar" asp-controller="doacao">
                     <input name="nome" class="form-control" id="pesquisa" placeholder="Procurar item por nome" style="border-radius: 10px 0 0 10px;" />
                     <button type="submit" class="btn btn-sm p-0 col-3" style="background-color:  var(--light-red); border-radius: 0 10px 10px 0;">
@@ -83,21 +83,13 @@
         <h5 class="text-danger title d-flex justify-content-center mt-4 mb-3">Itens a doar</h5>
         <div style="min-height: 60%; max-height: 55%" class="pre-scrollable mb-1">
             <ol class="list-group">
-                @if (@TempData["Sucesso"] != null)
-                {
-                    <Feedback Texto="@TempData["Sucesso"]" is-error="false"></Feedback>
-                }
-                else
-                {
-                    <Feedback Texto="@TempData["Erro"]" is-error="true"></Feedback>
-                }
+                <Feedback Texto="@TempData["Sucesso"]" is-error="false"></Feedback>
+                <Feedback Texto="@TempData["Erro"]" is-error="true"></Feedback>
                 @if (ViewBag.lista.Count > 0)
                 {
                     <li>
                         <p class="p-0 m-0 text-center text-list">qtd</p>
                     </li>
-
-
                     @foreach (var item in ViewBag.lista)
                     {
                         <li class="d-flex justify-content-between align-content-center col-11 m-auto">
@@ -124,10 +116,10 @@
             </ol>
         </div>
         <div class="d-flex justify-content-end">
-            @if (HttpContextAccessor.HttpContext.Session.Get("EstabSessao") == null)
+            @if (HttpContextAccessor.HttpContext.Session.Get("EstabSessao") == null || ViewBag.lista.Count == 0)
             {
                 <p class="px-4 py-2 text-dark btn-login btn" style="background-color: var(--medium-grey);
-                      border-radius: 10px;" title="Faça login para habilitar essa funcionalidade">
+                      border-radius: 10px;" title="Faça login e adicione ao menos um item para fazer uma doação">
                     Selecionar destino →
                 </p>
             }

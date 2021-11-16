@@ -41,6 +41,11 @@ namespace Global_Impact.Repositories
             _context.Estabelecimentos.Update(estabelecimento);
         }
 
+        public IList<Estabelecimento> Listar()
+        {
+            return _context.Estabelecimentos.ToList();
+        }
+
         public void Remover(int id)
         {
             _context.Estabelecimentos.Remove(_context.Estabelecimentos.Find(id));
