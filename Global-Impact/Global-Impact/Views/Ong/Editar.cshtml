@@ -36,4 +36,11 @@
             <a asp-action="EditarSenha" asp-controller="ong" asp-route-id="@Model.OngId" class="btn btn-danger px-5 ml-3" style="background-color: var(--main-red);">Editar senha</a>
         </div>
     </form>
+    <div style="display: none;">
+        <form asp-action="buscarcep" asp-controller="home">
+            <input name="cep" id="cepForm" />
+            <input name="url" id="urlForm" />
+            <button id="btnBuscar"></button>
+        </form>
+    </div>
 </div>

@@ -34,4 +34,11 @@
             <input type="submit" value="Salvar" class="btn ml-3 px-5 text-white" style="background-color: var(--header-bg);" />
         </div>
     </form>
+    <div style="display: none;">
+        <form asp-action="buscarcep" asp-controller="home">
+            <input name="cep" id="cepForm" />
+            <input name="url" id="urlForm" />
+            <button id="btnBuscar"></button>
+        </form>
+    </div>
 </div>

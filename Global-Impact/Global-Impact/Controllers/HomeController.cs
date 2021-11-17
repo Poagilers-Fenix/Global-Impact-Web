@@ -5,10 +5,8 @@ using Global_Impact.SessionHelpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Global_Impact.Controllers
@@ -56,6 +54,30 @@ namespace Global_Impact.Controllers
         {
             HttpContext.Session.Clear();
             return RedirectToAction("index");
+        }
+
+        public async Task<IActionResult> BuscarCEP()
+        {
+            string cep = Request.Form["cep"]; string url = Request.Form["url"];
+
+            HttpClient client = new HttpClient();
+            string api = $"http://viacep.com.br/ws/{cep}/json/";
+            var response = await client.GetStringAsync(api);
+            JObject json = JObject.Parse(response);
+
+            Endereco endereco = new Endereco()
+            {
+                Cidade = (string) json["localidade"],
+                Bairro = (string) json["bairro"],
+                Logradouro = (string) json["logradouro"],
+                UF = (string) json["uf"],
+                Cep = (string)json["cep"],
+            };
+
+            TempData["bairro"] = endereco.Bairro; TempData["cidade"] = endereco.Cidade;
+            TempData["cep"] = endereco.Cep; TempData["logradouro"] = endereco.Logradouro;
+            TempData["uf"] = endereco.UF;
+            return Redirect(url);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

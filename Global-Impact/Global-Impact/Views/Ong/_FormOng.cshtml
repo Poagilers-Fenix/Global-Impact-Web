@@ -35,7 +35,7 @@
             <label asp-for="Endereco.Bairro"></label>
         </div>
         <div class="d-flex flex-column">
-            <input asp-for="Endereco.Bairro" class="form-control mb-2">
+            <input asp-for="Endereco.Bairro" class="form-control" value="@((TempData["bairro"] != null) ? (TempData["bairro"]) : (""))" />
             <span asp-validation-for="Endereco.Bairro" class="text-danger mb-3" style="text-align: center"></span>
         </div>
     </div>
@@ -44,7 +44,7 @@
             <label asp-for="Endereco.Cep"></label>
         </div>
         <div class="d-flex flex-column">
-            <input asp-for="Endereco.Cep" id="cep" class="form-control mb-2">
+            <input asp-for="Endereco.Cep" id="cep" onblur="buscarCEP()" class="form-control" value="@((TempData["cep"] != null) ? (TempData["cep"]) : (""))" />
             <span asp-validation-for="Endereco.Cep" class="text-danger mb-3" style="text-align: center"></span>
         </div>
     </div>
@@ -53,7 +53,7 @@
             <label asp-for="Endereco.Cidade"></label>
         </div>
         <div class="d-flex flex-column">
-            <input asp-for="Endereco.Cidade" class="form-control mb-2">
+            <input asp-for="Endereco.Cidade" class="form-control" value="@((TempData["cidade"] != null) ? (TempData["cidade"]) : (""))" />
             <span asp-validation-for="Endereco.Cidade" class="text-danger mb-3" style="text-align: center"></span>
         </div>
     </div>
@@ -82,7 +82,7 @@
             <label asp-for="Endereco.UF"></label>
         </div>
         <div class="d-flex flex-column">
-            <input asp-for="Endereco.UF" id="uf" class="form-control mb-2">
+            <input asp-for="Endereco.UF" id="uf" class="form-control p-0 text-center" value="@((TempData["uf"] != null) ? (TempData["uf"]) : (""))" />
             <span asp-validation-for="Endereco.UF" class="text-danger mb-3" style="text-align: center"></span>
         </div>
     </div>
@@ -91,7 +91,7 @@
             <label asp-for="Endereco.Logradouro"></label>
         </div>
         <div class="d-flex flex-column">
-            <input asp-for="Endereco.Logradouro" class="form-control mb-2">
+            <input asp-for="Endereco.Logradouro" class="form-control" value="@((TempData["logradouro"] != null) ? (TempData["logradouro"]) : (""))" />
             <span asp-validation-for="Endereco.Logradouro" class="text-danger mb-3" style="text-align: center"></span>
         </div>
     </div>
