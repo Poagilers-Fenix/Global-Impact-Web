@@ -124,8 +124,10 @@ namespace Global_Impact.Controllers
                 {
                     if (novaSenha == confirma)
                     {
-                        estab.Senha = novaSenha;
-                        HttpContext.Session.SetObjectAsJson("EstabSessao", estab);
+                        estabSessao.Senha = novaSenha;
+                        _estabRepository.Editar(estabSessao);
+                        _estabRepository.Salvar();
+                        HttpContext.Session.SetObjectAsJson("EstabSessao", estabSessao);
                         TempData["Sucesso"] = "Senha alterada com sucesso!";
                     }
                     else { TempData["Erro"] = "As senhas informadas no campo de 'Nova Senha' e de confirmação são diferentes!"; }
