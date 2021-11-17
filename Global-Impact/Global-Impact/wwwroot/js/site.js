@@ -3,11 +3,11 @@
     var porta = document.querySelector('#porta')
 
     porta.addEventListener('mouseenter', () => {
-        porta.src = '../img/portaAberta.png'
+        porta.src = 'http://localhost:5000/img/portaAberta.png'
     })
 
     porta.addEventListener('mouseout', () => {
-        porta.src = '../img/portaFechada.png'
+        porta.src = 'http://localhost:5000/img/portaFechada.png'
     })
 
 }

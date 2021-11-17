@@ -23,7 +23,7 @@
 }
 
 
-<div class="d-flex box-shadow flex-column col-12 ma-2 mb-2 " style="border-radius: 30px; background-color: #F8F8F8; max-height: @(TempData["Sucesso"] != null || TempData["Erro"] != null ? "90%" : "100%")">
+<div class="d-flex box-shadow flex-column col-12 ma-2 mb-2" style="border-radius: 30px; background-color: #F8F8F8; height: 100%">
 
     <div class="d-flex w-100">
         <div class="d-flex flex-column col-5">
@@ -36,7 +36,7 @@
 
         <div class="input-group col-4 d-flex align-items-center">
             <form class="d-flex w-100" asp-action="index" asp-controller="Ong">
-                <input name="pesquisa" class="form-control text" id="pesquisa" placeholder="Procurar ONG por Cidade" style="border-radius: 10px 0 0 10px;" />
+                <input name="cidade" class="form-control text" id="pesquisa" placeholder="Procurar ONG por Cidade" style="border-radius: 10px 0 0 10px;" />
                 <button type="submit" class="btn btn-sm p-0 col-3" style="background-color:  var(--light-red); border-radius: 0 10px 10px 0;">
                     <span class="text-white text">
                         Buscar
@@ -55,7 +55,7 @@
     <div class="d-flex justify-content-around align-items-center flex-wrap pre-scrollable mb-3">
         @if (Model.Count == 0)
         {
-            <p style="margin: 5%;">Ainda não há nenhuma ong cadastrada no nosso sistema. Fique à vontade para adicionar a primeira!</p>
+            <p style="margin: 5%;">Nenhuma ONG por aqui. Fique à vontade para adicionar a primeira!</p>
         }
         @foreach (var item in Model)
         {

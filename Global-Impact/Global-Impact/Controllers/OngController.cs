@@ -30,7 +30,7 @@ namespace Global_Impact.Controllers
         public IActionResult Index(string cidade)
         {
             IList<Ong> listaOng = _ongRepository.BuscarPor(o =>
-                o.Endereco.Cidade.Contains(cidade) || cidade == null);
+                o.Endereco.Cidade.ToLower().Contains(cidade) || cidade == null);
             return View(listaOng);
         }
 
@@ -56,7 +56,7 @@ namespace Global_Impact.Controllers
             _ongRepository.Cadastrar(ong);
             _ongRepository.Salvar();
             TempData["Sucesso"] = "Ong cadastrada com sucesso!";
-            return RedirectToAction("Cadastrar");
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -96,6 +96,7 @@ namespace Global_Impact.Controllers
         public IActionResult Editar(int id)
         {
             Ong ong = _ongRepository.BuscarPorId(id);
+            HttpContext.Session.SetObjectAsJson("ONGSessao", ong);
             return View(ong);
         }
 
@@ -104,9 +105,8 @@ namespace Global_Impact.Controllers
         {
             if (ModelState.IsValid)
             {
-                Ong ongBanco = _ongRepository.BuscarPorId(ong.OngId);
-                string senha = ongBanco.Senha;
-                if (ong.Senha == senha)
+                Ong ongBanco = HttpContext.Session.GetObjectFromJson<Ong>("ONGSessao");
+                if (ong.Senha == ongBanco.Senha)
                 {
                     _ongRepository.Editar(ong);
                     _ongRepository.Salvar();

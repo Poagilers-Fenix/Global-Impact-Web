@@ -24,7 +24,7 @@
 
 
 <div class="pre-scrollable d-flex box-shadow flex-column align-items-center w-100 col-12 pb-5 b-radius" 
-     style="background-color: #F8F8F8; padding-left: 5%; padding-right: 5%; max-height: @(TempData["Sucesso"] != null || TempData["Erro"] != null ? "90%" : "100%")">
+     style="background-color: #F8F8F8; padding-left: 5%; padding-right: 5%; height: 100%">
     <div class="w-100">
         <h4 class="d-flex justify-content-center font-weight-bold mb-0 mt-3 pt-4 pb-5" style="color: var(--light-red)">@Model.Nome</h4>
 
@@ -37,8 +37,8 @@
             <img src="@(Model.Foto == null ? "https://raw.githubusercontent.com/Poagilers-Fenix/WebApp-Challenge/main/Imagens/no-image-found.png?token=AOXNWKVBRD3WDDJKASDBZT3BHUBDY" : @Model.Foto)"
                  style="object-fit: cover; height: 200px; width: 300px; border-radius: 30px;" />
         </div>
-        <div class="d-flex justify-content-center align-items-center ml-3 pb-0">
-            <p class="paragraph">@Model.Descricao</p>
+        <div class="d-flex justify-content-center align-items-center ml-3 pb-0 w-75">
+            <p class="paragraph w-100">@Model.Descricao</p>
         </div>
     </div>
     <div class="d-flex justify-content-center flex-row w-100 py-5">
