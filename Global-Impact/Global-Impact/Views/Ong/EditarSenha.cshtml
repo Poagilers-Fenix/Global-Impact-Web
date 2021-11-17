@@ -1,5 +1,5 @@
-﻿@model Estabelecimento 
- 
+﻿@model Ong
+
 @{
     ViewData["title"] = "Editar Senha";
     Layout = "_LayoutUser";
@@ -15,7 +15,7 @@
 </div>
 
 <div class="d-flex flex-column align-items-center justify-content-center container">
-    <form class="text-center" style="width: 40%" asp-action="editarSenha" asp-controller="Estabelecimento">
+    <form class="text-center" style="width: 40%" asp-action="editarSenha" asp-controller="Ong">
         <div class="form-group">
             <div class="d-flex justify-content-center">
                 <label asp-for="Senha">Senha Atual</label>
@@ -48,6 +48,6 @@
             <button class="btn-abled btn mx-3 w-50">Salvar senha</button>
         </div>
     </form>
-    <button asp-action="EditarSenha" asp-controller="Ong" asp-route-id="@Model.EstabelecimentoId" class="btn btn-outline m-3">Voltar</button>
+    <a asp-action="Editar" asp-controller="Ong" asp-route-id="@Model.OngId" class="btn btn-outline m-3">Voltar</a>
 </div>
 

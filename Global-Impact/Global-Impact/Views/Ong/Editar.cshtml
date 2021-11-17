@@ -33,6 +33,7 @@
         <div class="d-flex justify-content-center">
             <a asp-action="index" asp-controller="ong" class="btn btn-danger px-5" style="background-color: var(--main-red);">Voltar</a>
             <input type="submit" value="Salvar" class="btn ml-3 px-5 text-white" style="background-color: var(--header-bg);" />
+            <a asp-action="EditarSenha" asp-controller="ong" asp-route-id="@Model.OngId" class="btn btn-danger px-5 ml-3" style="background-color: var(--main-red);">Editar senha</a>
         </div>
     </form>
 </div>

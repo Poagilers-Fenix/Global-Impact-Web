@@ -117,6 +117,40 @@ namespace Global_Impact.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult EditarSenha(int id)
+        {
+            Ong ong = _ongRepository.BuscarPorId(id);
+            HttpContext.Session.SetObjectAsJson("ONGSessao", ong);
+            return View(ong);
+        }
+
+        [HttpPost]
+        public IActionResult EditarSenha(Ong ong)
+        {
+            string novaSenha = Request.Form["novaSenha"];
+            string confirma = Request.Form["confirma"];
+            Ong ongSessao = HttpContext.Session.GetObjectFromJson<Ong>("ONGSessao");
+
+            if (ongSessao.Senha == ong.Senha)
+            {
+                if (novaSenha.Length > 6 && confirma.Length > 6)
+                {
+                    if (novaSenha == confirma)
+                    {
+                        ong.Senha = novaSenha;
+                        HttpContext.Session.SetObjectAsJson("EstabSessao", ong);
+                        TempData["Sucesso"] = "Senha alterada com sucesso!";
+                    }
+                    else { TempData["Erro"] = "As senhas informadas no campo de 'Nova Senha' e de confirmação são diferentes!"; }
+                }
+                else { TempData["Erro"] = "Os campos de nova senha e de confirmação de nova senha precisam ter, no mínimo, 6 caracteres."; }
+            }
+            else { TempData["Erro"] = "A senha informada não é a senha atual."; }
+
+            return View();
+        }
+
         public IActionResult DeletarOng(string senha, int ongId)
         {
             IList<Ong> Ongs = _ongRepository.Listar();
