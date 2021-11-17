@@ -30,8 +30,9 @@
     <form asp-action="Editar" asp-controller="Ong" class="w-75">
         <input asp-for="OngId" type="hidden" />
         <partial name="_FormOng" />
-        <div class="d-flex justify-content-center text-center">
-            <button class="btn-abled btn mx-3">Salvar Alterações</button>
+        <div class="d-flex justify-content-center">
+            <a asp-action="index" asp-controller="ong" class="btn btn-danger px-5" style="background-color: var(--main-red);">Voltar</a>
+            <input type="submit" value="Salvar" class="btn ml-3 px-5 text-white" style="background-color: var(--header-bg);" />
         </div>
     </form>
 </div>
