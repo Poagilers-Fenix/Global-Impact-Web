@@ -15,14 +15,17 @@ namespace Global_Impact.Controllers
     {
 
         private IItemRepository _itemRepository;
+        private IDoacaoRepository _doacaoRepository;
 
-        public DoacaoController(IItemRepository itemRepository)
+        public DoacaoController(IItemRepository itemRepository, IDoacaoRepository doacaorepository)
         {
             _itemRepository = itemRepository;
+            _doacaoRepository = doacaorepository;
         }
 
         public IActionResult Index()
         {
+            ViewBag.doacoes = _doacaoRepository.Listar();
             return View();
         }
 
