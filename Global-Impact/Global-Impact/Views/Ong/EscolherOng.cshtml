@@ -13,7 +13,10 @@
                 <a class="nav-link text-dark another-page" style="font-size:22px" asp-controller="Home" asp-action="Index">Página inicial</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link current-page" style="font-size:22px; color: var(--main-red); font-weight: bold" asp-controller="doacao" asp-action="cadastrar">Doar Alimento</a>
+                <a class="nav-link current-page" style="font-size:22px; color: var(--main-red); font-weight: bold" asp-controller="doacao" asp-action="cadastrar">Nova doação</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark another-page" asp-controller="doacao" asp-action="index">Ver doações</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-dark another-page" style="font-size:22px" asp-controller="Ong" asp-action="Index">ONGs</a>
@@ -21,6 +24,7 @@
         </ul>
     </div>
 }
+
 
 
 <div class="d-flex box-shadow flex-column h-100 col-12 ma-2 " style="border-radius: 30px; background-color: #F8F8F8">

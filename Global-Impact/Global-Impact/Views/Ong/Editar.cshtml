@@ -11,7 +11,10 @@
                 <a class="nav-link text-dark another-page" asp-controller="Home" asp-action="Index">Página Inicial</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark another-page" asp-controller="doacao" asp-action="cadastrar">Doar Alimento</a>
+                <a class="nav-link text-dark another-page" asp-controller="doacao" asp-action="cadastrar">Nova doação</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark another-page" asp-controller="doacao" asp-action="index">Ver doações</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link current-page" style="color: var(--main-red); font-weight: bold" asp-controller="Ong" asp-action="Index">ONGs</a>
@@ -28,19 +31,18 @@
     <feedback texto="@TempData["Erro"]" is-error="true"></feedback>
     <feedback texto="@TempData["Sucesso"]"></feedback>
 
-        <div class="d-flex justify-content-center text-center">
-            
-        </div>
+    <div class="d-flex justify-content-center text-center">
+
+    </div>
     <form asp-action="Editar" asp-controller="Ong" class="w-75">
         <input asp-for="OngId" type="hidden" />
         <partial name="_FormOng" />
         <div class="d-flex justify-content-center text-center">
             <button class="btn-abled btn mx-3">Salvar Alterações</button>
             <a asp-action="editarSenha" asp-route-id="@Model.OngId" class="btn btn-abled">Editar senha →</a>
-            @*<a asp-action="EditarSenha" asp-controller="ong"  class="btn btn-danger px-5 ml-3" style="background-color: var(--main-red);">Editar senha</a>*@
         </div>
     </form>
-        <button onclick="goBack()" class="btn btn-outline m-3">Voltar</button>
+    <a asp-action="PaginaOng" asp-controller="ong" asp-route-id="@Model.OngId" class="btn btn-outline px-5 m-3">Voltar</a>
     <div style="display: none;">
         <form asp-action="buscarcep" asp-controller="home">
             <input name="cep" id="cepForm" />
