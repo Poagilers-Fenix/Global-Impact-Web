@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["title"] = "Doações realizadas";
+}
+
+
+@section Links{
+    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+        <ul class="navbar-nav flex-grow-1 d-flex justify-content-end mr-5">
+            <li class="nav-item">
+                <a class="nav-link text-dark another-page" asp-controller="Home" asp-action="Index">Página Inicial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark another-page" asp-controller="doacao" asp-action="cadastrar">Doar Alimento</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link current-page" style="color: var(--main-red); font-weight: bold" asp-controller="doacao" asp-action="index">Ver doações</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark another-page" asp-controller="Ong" asp-action="Index">ONGs</a>
+            </li>
+        </ul>
+    </div>
+}
+
+
+<div class="b-radius box-shadow col-12 h-100">
+    <div class="w-100 d-flex justify-content-center">
+        <h4 class="title">@ViewData["title"]</h4>
+    </div>
+    <div class="pre-scrollable b-radius d-flex justify-content-around col-12 flex-wrap">
+        @foreach (var doacao in ViewBag.doacoes)
+        {
+            <div class="box-shadow col-4">
+                <p class="paragraph">@doacao.DataDoacao.ToShortDateString()</p>
+            </div>
+        }
+    </div>
+</div>
