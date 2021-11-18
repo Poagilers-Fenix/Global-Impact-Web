@@ -24,7 +24,13 @@
             <label asp-for="Foto"></label>
         </div>
         <div class="d-flex flex-column">
-            <input asp-for="Foto" class="form-control mb-2">
+            <div>
+                <input asp-for="Foto" class="form-control mb-2">
+                <div class="tooltip">
+                    <span class="icon">i</span>
+                    <p>Coloque aqui a URL de uma foto que represente sua ONG!</p>
+                </div>
+            </div>
             <span asp-validation-for="Foto" class="text-danger mb-3" style="text-align: center"></span>
         </div>
     </div>

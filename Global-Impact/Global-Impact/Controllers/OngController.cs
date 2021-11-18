@@ -71,15 +71,15 @@ namespace Global_Impact.Controllers
             if (ModelState.IsValid)
             {
                 List<DoacaoItem> doacaoItem = HttpContext.Session.GetObjectFromJson<List<DoacaoItem>>("ListaDoacao");
+                Estabelecimento estab = HttpContext.Session.GetObjectFromJson<Estabelecimento>("EstabSessao");
+                Doacao doacao = new Doacao()
+                {
+                    CodigoEstab = estab.EstabelecimentoId,
+                    CodigoOng = id,
+                    DataDoacao = DateTime.Today.Date
+                };
                 foreach (var di in doacaoItem)
                 {
-                    Estabelecimento estab = HttpContext.Session.GetObjectFromJson<Estabelecimento>("EstabSessao");
-                    Doacao doacao = new Doacao()
-                    {
-                        CodigoEstab = estab.EstabelecimentoId,
-                        CodigoOng = id,
-                        DataDoacao = DateTime.Today.Date
-                    };
                     di.Doacao = doacao;
                     _doacaoItemRepository.Cadastrar(di);
                     _doacaoItemRepository.Salvar();

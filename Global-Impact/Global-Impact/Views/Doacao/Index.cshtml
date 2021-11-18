@@ -23,28 +23,54 @@
 }
 
 
-<div class="b-radius box-shadow col-12 h-100">
+<div class="b-radius box-shadow col-12 h-100 mb-3">
     <div class="w-100 d-flex justify-content-center">
-        <h4 class="title">@ViewData["title"]</h4>
+        <h4 class="title mt-5">@ViewData["title"]</h4>
     </div>
     <div class="pre-scrollable d-flex justify-content-around mt-2 w-100 flex-wrap" style="height: 70%">
+        @if (ViewBag.doacoes == null)
+        {
+            <div class="d-flex flex-column align-items-center">
+                <h5 class="text-info title">Ainda não temos nenhum registro de doações realizadas :(</h5>
+                <p class="text-dark paragraph text-center w-75" style="margin-left: 0; text-indent: 0; flex-wrap: wrap;">Que tal realizar uma boa ação hoje e ajudar aqueles que precisam? Realize a primeira doação através do weFeed!</p>
+            </div>
+        }
+
         @foreach (var doacao in ViewBag.doacoes)
         {
             <div class="box-shadow b-radius col-3 m-2">
-                <div class="d-flex">
-                    <p class="paragraph mt-3">@doacao.DataDoacao.ToShortDateString()</p>
-                    @*<p>@doacao.EstabelecimentoId</p>*@
+                <div class="d-flex align-content-center justify-content-between mt-3">
+                    <p class="text-items mx-auto">@doacao.DataDoacao.ToShortDateString()</p>
+                    @foreach (var o in ViewBag.ongs)
+                    {
+                        @if (doacao.CodigoOng == o.OngId)
+                        {
+                            <a asp-action="PaginaOng" asp-controller="ong" asp-route-id="@o.OngId" class="mx-auto my-0 link">@o.Nome</a>
+                            break;
+                        }
+                    }
                 </div>
-                <ol>
+                <ol class="col-12 text-center">
+                    @{ var cont = 1; }
                     @foreach (var di in ViewBag.itens)
                     {
                         @if (di.Doacao.DoacaoId == doacao.DoacaoId)
                         {
-                            <li>@di.Item.Nome</li>
+                            <li class="text-items d-flex justify-content-between">
+                                <div class="d-flex">
+                                    <p class="text-items mr-2">@cont.</p> @di.Item.Nome
+                                </div>
+                                <div class="d-flex">
+                                    @di.Quantidade
+                                    @di.UnidadeMedida
+                                </div>
+                            </li>
+                            cont += 1;
                         }
                     }
                 </ol>
             </div>
         }
+
     </div>
 </div>
