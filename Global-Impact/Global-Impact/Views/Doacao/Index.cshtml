@@ -10,7 +10,7 @@
                 <a class="nav-link text-dark another-page" asp-controller="Home" asp-action="Index">Página Inicial</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark another-page" asp-controller="doacao" asp-action="cadastrar">Doar Alimento</a>
+                <a class="nav-link text-dark another-page" asp-controller="doacao" asp-action="cadastrar">Nova doação</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link current-page" style="color: var(--main-red); font-weight: bold" asp-controller="doacao" asp-action="index">Ver doações</a>
@@ -27,11 +27,23 @@
     <div class="w-100 d-flex justify-content-center">
         <h4 class="title">@ViewData["title"]</h4>
     </div>
-    <div class="pre-scrollable b-radius d-flex justify-content-around col-12 flex-wrap">
+    <div class="pre-scrollable d-flex justify-content-around mt-2 w-100 flex-wrap" style="height: 70%">
         @foreach (var doacao in ViewBag.doacoes)
         {
-            <div class="box-shadow col-4">
-                <p class="paragraph">@doacao.DataDoacao.ToShortDateString()</p>
+            <div class="box-shadow b-radius col-3 m-2">
+                <div class="d-flex">
+                    <p class="paragraph mt-3">@doacao.DataDoacao.ToShortDateString()</p>
+                    @*<p>@doacao.EstabelecimentoId</p>*@
+                </div>
+                <ol>
+                    @foreach (var di in ViewBag.itens)
+                    {
+                        @if (di.Doacao.DoacaoId == doacao.DoacaoId)
+                        {
+                            <li>@di.Item.Nome</li>
+                        }
+                    }
+                </ol>
             </div>
         }
     </div>

@@ -120,7 +120,7 @@ namespace Global_Impact.Controllers
 
             if (estabSessao.Senha == estab.Senha)
             {
-                if (novaSenha.Length > 6 && confirma.Length > 6)
+                if (novaSenha.Length >= 6 && confirma.Length >= 6)
                 {
                     if (novaSenha == confirma)
                     {

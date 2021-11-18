@@ -95,6 +95,10 @@ namespace Global_Impact.Controllers
         [HttpGet]
         public IActionResult Editar(int id)
         {
+            if (HttpContext.Session.GetObjectFromJson<Ong>("ONGSessao") != null) 
+            {
+                return View(HttpContext.Session.GetObjectFromJson<Ong>("ONGSessao"));
+            }
             Ong ong = _ongRepository.BuscarPorId(id);
             HttpContext.Session.SetObjectAsJson("ONGSessao", ong);
             return View(ong);
@@ -135,7 +139,7 @@ namespace Global_Impact.Controllers
 
             if (ongSessao.Senha == ong.Senha)
             {
-                if (novaSenha.Length > 6 && confirma.Length > 6)
+                if (novaSenha.Length >= 6 && confirma.Length >= 6)
                 {
                     if (novaSenha == confirma)
                     {

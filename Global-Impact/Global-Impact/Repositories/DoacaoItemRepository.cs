@@ -21,6 +21,11 @@ namespace Global_Impact.Repositories
             _context.DoacoesItens.Add(doacaoItem);
         }
 
+        public IList<DoacaoItem> Listar()
+        {
+            return _context.DoacoesItens.ToList();
+        }
+
         public void Salvar()
         {
             _context.SaveChanges();

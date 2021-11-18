@@ -15,17 +15,34 @@ namespace Global_Impact.Controllers
     {
 
         private IItemRepository _itemRepository;
+        private IDoacaoItemRepository _doacaoItemRepository;
         private IDoacaoRepository _doacaoRepository;
 
-        public DoacaoController(IItemRepository itemRepository, IDoacaoRepository doacaorepository)
+        public DoacaoController(IItemRepository itemRepository, IDoacaoRepository doacaorepository, IDoacaoItemRepository doacaoItemRepository)
         {
             _itemRepository = itemRepository;
             _doacaoRepository = doacaorepository;
+            _doacaoItemRepository = doacaoItemRepository;
         }
 
         public IActionResult Index()
         {
             ViewBag.doacoes = _doacaoRepository.Listar();
+            IList<DoacaoItem> doacoesItens = _doacaoItemRepository.Listar();
+            IList<DoacaoItem> itens = new List<DoacaoItem>();
+            IList<Item> lista = _itemRepository.Listar();
+
+            foreach (var item in lista)
+            {
+                foreach (var di in doacoesItens)
+                {
+                    if (item.ItemId == di.ItemId)
+                    {
+                        itens.Add(di);
+                    }
+                }
+            }
+            ViewBag.itens = itens;
             return View();
         }
 
