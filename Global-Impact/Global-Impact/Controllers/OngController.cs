@@ -123,6 +123,7 @@ namespace Global_Impact.Controllers
             Ong ong = _ongRepository.BuscarPorId(id);
             HttpContext.Session.SetObjectAsJson("ONGSessao", ong);
             return View(ong);
+            //return View();
         }
 
         [HttpPost]
@@ -138,8 +139,10 @@ namespace Global_Impact.Controllers
                 {
                     if (novaSenha == confirma)
                     {
-                        ong.Senha = novaSenha;
-                        HttpContext.Session.SetObjectAsJson("EstabSessao", ong);
+                        ongSessao.Senha = novaSenha;
+                        _ongRepository.Editar(ongSessao);
+                        _ongRepository.Salvar();
+                        HttpContext.Session.SetObjectAsJson("ONGSessao", ongSessao);
                         TempData["Sucesso"] = "Senha alterada com sucesso!";
                     }
                     else { TempData["Erro"] = "As senhas informadas no campo de 'Nova Senha' e de confirmação são diferentes!"; }
@@ -148,7 +151,7 @@ namespace Global_Impact.Controllers
             }
             else { TempData["Erro"] = "A senha informada não é a senha atual."; }
 
-            return View();
+            return View(ong);
         }
 
         public IActionResult DeletarOng(string senha, int ongId)

@@ -27,15 +27,20 @@
     </div>
     <feedback texto="@TempData["Erro"]" is-error="true"></feedback>
     <feedback texto="@TempData["Sucesso"]"></feedback>
+
+        <div class="d-flex justify-content-center text-center">
+            
+        </div>
     <form asp-action="Editar" asp-controller="Ong" class="w-75">
         <input asp-for="OngId" type="hidden" />
         <partial name="_FormOng" />
-        <div class="d-flex justify-content-center">
-            <a asp-action="index" asp-controller="ong" class="btn btn-danger px-5" style="background-color: var(--main-red);">Voltar</a>
-            <input type="submit" value="Salvar" class="btn ml-3 px-5 text-white" style="background-color: var(--header-bg);" />
-            <a asp-action="EditarSenha" asp-controller="ong" asp-route-id="@Model.OngId" class="btn btn-danger px-5 ml-3" style="background-color: var(--main-red);">Editar senha</a>
+        <div class="d-flex justify-content-center text-center">
+            <button class="btn-abled btn mx-3">Salvar Alterações</button>
+            <a asp-action="editarSenha" asp-route-id="@Model.OngId" class="btn btn-abled">Editar senha →</a>
+            @*<a asp-action="EditarSenha" asp-controller="ong"  class="btn btn-danger px-5 ml-3" style="background-color: var(--main-red);">Editar senha</a>*@
         </div>
     </form>
+        <button onclick="goBack()" class="btn btn-outline m-3">Voltar</button>
     <div style="display: none;">
         <form asp-action="buscarcep" asp-controller="home">
             <input name="cep" id="cepForm" />

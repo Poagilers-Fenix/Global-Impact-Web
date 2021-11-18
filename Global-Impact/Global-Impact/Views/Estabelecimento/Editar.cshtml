@@ -24,7 +24,7 @@
             <a asp-action="editarSenha" class="btn btn-abled">Editar senha →</a>
         </div>
     </form>
-    <button onclick="goBack()" class="btn btn-outline m-3">Voltar</button>
+    <a asp-action="index" asp-controller="home" class="btn btn-outline m-3">Voltar</a>
     <div style="display: none;">
         <form asp-action="buscarcep" asp-controller="home">
             <input name="cep" id="cepForm" />

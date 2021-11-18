@@ -2,52 +2,69 @@
 
 @{
     ViewData["title"] = "Editar Senha";
-    Layout = "_LayoutUser";
 }
 
-<div class="w-50 mx-auto mt-2 mb-4 d-flex justify-content-around">
-    <h4 class="title">@ViewData["title"]</h4>
+@section Links{
+    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+        <ul class="navbar-nav flex-grow-1 d-flex justify-content-end mr-5">
+            <li class="nav-item">
+                <a class="nav-link text-dark another-page" asp-controller="Home" asp-action="Index">Página Inicial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark another-page" asp-controller="doacao" asp-action="cadastrar">Doar Alimento</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link current-page" style="color: var(--main-red); font-weight: bold" asp-controller="Ong" asp-action="Index">ONGs</a>
+            </li>
+        </ul>
+    </div>
+}
+
+<div class="pre-scrollable d-flex box-shadow flex-column align-items-center w-100 mh-100 col-12 pb-5 b-radius" 
+     style="background-color: #F8F8F8; padding-left: 5%; padding-right: 5%; height: 100%">
+    <div class="w-50 mx-auto d-flex justify-content-around">
+        <h4 class="title">@ViewData["title"]</h4>
+    </div>
+
+    <div class="d-flex justify-content-center align-self-center m-auto">
+        <Feedback Texto="@TempData["Erro"]" is-error="true"></Feedback>
+        <Feedback texto="@TempData["Sucesso"]"></Feedback>
+    </div>
+
+    <div class="d-flex flex-column align-items-center justify-content-center container">
+        <form class="text-center" style="width: 40%" asp-action="editarSenha" asp-controller="Ong">
+            <div class="form-group">
+                <div class="d-flex justify-content-center">
+                    <label asp-for="Senha">Senha Atual</label>
+                </div>
+                <div class="d-flex flex-column">
+                    <input asp-for="Senha" class="form-control mb-2" type="password">
+                    <span asp-validation-for="Senha" class="text-danger mb-3" style="text-align: center"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="d-flex justify-content-center">
+                    <label>Nova Senha</label>
+                </div>
+                <div class="d-flex flex-column">
+                    <input name="novaSenha" class="form-control" type="password" />
+                    <span asp-validation-for="Senha" class="text-danger mb-3" style="text-align: center"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="d-flex justify-content-center">
+                    <label>Confirmar Senha</label>
+                </div>
+                <div class="d-flex flex-column">
+                    <input name="confirma" class="form-control" type="password" />
+                    <span asp-validation-for="Senha" class="text-danger mb-3" style="text-align: center"></span>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center text-center w-100">
+                <button class="btn-abled btn mx-3 w-50">Salvar senha</button>
+            </div>
+        </form>
+        <a asp-action="Editar" asp-controller="Ong" asp-route-id="@Model.OngId" class="btn btn-outline m-3">Voltar</a>
+    </div>
 </div>
-
-<div class="d-flex col-8 justify-content-center align-self-center m-auto">
-    <Feedback Texto="@TempData["Erro"]" is-error="true"></Feedback>
-    <Feedback texto="@TempData["Sucesso"]"></Feedback>
-</div>
-
-<div class="d-flex flex-column align-items-center justify-content-center container">
-    <form class="text-center" style="width: 40%" asp-action="editarSenha" asp-controller="Ong">
-        <div class="form-group">
-            <div class="d-flex justify-content-center">
-                <label asp-for="Senha">Senha Atual</label>
-            </div>
-            <div class="d-flex flex-column">
-                <input asp-for="Senha" class="form-control mb-2" type="password">
-                <span asp-validation-for="Senha" class="text-danger mb-3" style="text-align: center"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="d-flex justify-content-center">
-                <label>Nova Senha</label>
-            </div>
-            <div class="d-flex flex-column">
-                <input name="novaSenha" class="form-control" type="password" />
-                <span asp-validation-for="Senha" class="text-danger mb-3" style="text-align: center"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="d-flex justify-content-center">
-                <label>Confirmar Senha</label>
-            </div>
-            <div class="d-flex flex-column">
-                <input name="confirma" class="form-control" type="password" />
-                <span asp-validation-for="Senha" class="text-danger mb-3" style="text-align: center"></span>
-            </div>
-        </div>
-
-        <div class="d-flex justify-content-center text-center w-100">
-            <button class="btn-abled btn mx-3 w-50">Salvar senha</button>
-        </div>
-    </form>
-    <a asp-action="Editar" asp-controller="Ong" asp-route-id="@Model.OngId" class="btn btn-outline m-3">Voltar</a>
-</div>
-
