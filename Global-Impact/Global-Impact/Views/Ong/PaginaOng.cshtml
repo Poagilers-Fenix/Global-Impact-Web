@@ -13,7 +13,10 @@
                 <a class="nav-link text-dark another-page" asp-controller="Home" asp-action="Index">Página Inicial</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark another-page" asp-controller="doacao" asp-action="cadastrar">Doar Alimento</a>
+                <a class="nav-link text-dark another-page" asp-controller="doacao" asp-action="cadastrar">Nova doação</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark another-page" asp-controller="doacao" asp-action="index">Ver doações</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link current-page" style="color: var(--main-red); font-weight: bold" asp-controller="Ong" asp-action="Index">ONGs</a>
@@ -23,7 +26,8 @@
 }
 
 
-<div class="pre-scrollable d-flex box-shadow flex-column align-items-center w-100 mh-100 col-12 pb-5 b-radius" 
+
+<div class="pre-scrollable d-flex box-shadow flex-column align-items-center w-100 mh-100 col-12 pb-5 b-radius"
      style="background-color: #F8F8F8; padding-left: 5%; padding-right: 5%; height: 100%">
     <div class="w-100">
         <h4 class="d-flex justify-content-center font-weight-bold mb-0 mt-3 pt-4 pb-5" style="color: var(--light-red)">@Model.Nome</h4>

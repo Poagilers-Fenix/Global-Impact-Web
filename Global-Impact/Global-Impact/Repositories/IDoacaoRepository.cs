@@ -12,5 +12,7 @@ namespace Global_Impact.Repositories
 
         void Salvar();
 
+        IList<Doacao> Listar();
+
     }
 }

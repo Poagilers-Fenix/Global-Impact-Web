@@ -101,7 +101,7 @@ namespace Global_Impact.Controllers
                 else { TempData["Erro"] = "A senha informada não é a senha atual."; }
 
             }
-            return View();
+            return View(estab);
         }
 
         [HttpGet]
@@ -120,7 +120,7 @@ namespace Global_Impact.Controllers
 
             if (estabSessao.Senha == estab.Senha)
             {
-                if (novaSenha.Length > 6 && confirma.Length > 6)
+                if (novaSenha.Length >= 6 && confirma.Length >= 6)
                 {
                     if (novaSenha == confirma)
                     {
