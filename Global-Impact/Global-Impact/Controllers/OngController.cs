@@ -59,10 +59,12 @@ namespace Global_Impact.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        public IActionResult EscolherOng()
+        public IActionResult EscolherOng(string cidade)
         {
-            return View(_ongRepository.Listar());
+            IList<Ong> listaOng = _ongRepository.BuscarPor(o =>
+                o.Endereco.Cidade.ToLower().Contains(cidade) || cidade == null);
+            return View(listaOng);
+            //return View(_ongRepository.Listar());
         }
 
         [HttpPost]
@@ -97,7 +99,7 @@ namespace Global_Impact.Controllers
         {
             Ong ong = _ongRepository.BuscarPorId(id);
             Ong ongSessao = HttpContext.Session.GetObjectFromJson<Ong>("ONGSessao");
-            if (ongSessao.OngId != ong.OngId) 
+            if (ongSessao != null && ongSessao.OngId != ong.OngId) 
             {
                 HttpContext.Session.SetObjectAsJson("ONGSessao", ong);
                 return View(ong);
