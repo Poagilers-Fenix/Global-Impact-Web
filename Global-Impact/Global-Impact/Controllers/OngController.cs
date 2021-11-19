@@ -95,11 +95,13 @@ namespace Global_Impact.Controllers
         [HttpGet]
         public IActionResult Editar(int id)
         {
-            if (HttpContext.Session.GetObjectFromJson<Ong>("ONGSessao") != null) 
-            {
-                return View(HttpContext.Session.GetObjectFromJson<Ong>("ONGSessao"));
-            }
             Ong ong = _ongRepository.BuscarPorId(id);
+            Ong ongSessao = HttpContext.Session.GetObjectFromJson<Ong>("ONGSessao");
+            if (ongSessao.OngId != ong.OngId) 
+            {
+                HttpContext.Session.SetObjectAsJson("ONGSessao", ong);
+                return View(ong);
+            }
             HttpContext.Session.SetObjectAsJson("ONGSessao", ong);
             return View(ong);
         }
@@ -118,7 +120,7 @@ namespace Global_Impact.Controllers
                     return RedirectToAction("editar");
                 }
             }
-            return View();
+            return View(ong);
         }
 
         [HttpGet]

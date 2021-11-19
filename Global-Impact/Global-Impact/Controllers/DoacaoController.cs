@@ -87,7 +87,7 @@ namespace Global_Impact.Controllers
                 return RedirectToAction("Cadastrar");
             }
             TempData["Erro"] = "Veja se você colocou a quantidade e data de validade do item!";
-            return View();
+            return RedirectToAction("Cadastrar");
         }
 
         [HttpPost]
